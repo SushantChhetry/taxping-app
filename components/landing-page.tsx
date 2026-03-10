@@ -329,117 +329,136 @@ export default function LandingPage() {
         </div>
 
         <div className="flex justify-center">
-          <div className="relative">
-            <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
+          <div className="flex flex-col items-center">
+            <div className="relative">
+              <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
-            <div className="pointer-events-none absolute -left-24 bottom-16 z-0 hidden animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float lg:flex">
-              <span className="text-lg">📄</span>
-              <div className="text-xs font-bold leading-4 text-inkSoft">
-                Johnson_Mark_W2_2025.pdf
-                <span className="mt-1 block font-semibold text-muted">Auto-named · Saved to Drive</span>
+              <div className="pointer-events-none absolute -left-28 bottom-20 z-0 hidden max-w-[220px] animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md xl:flex">
+                <span className="text-lg">📄</span>
+                <div className="text-xs font-bold leading-4 text-inkSoft">
+                  Johnson_Mark_W2_2025.pdf
+                  <span className="mt-1 block font-semibold text-muted">Auto-named · Saved to Drive</span>
+                </div>
               </div>
-            </div>
 
-            <div className="pointer-events-none absolute -right-24 top-20 z-0 hidden animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float lg:flex">
-              <span className="text-lg">✅</span>
-              <div className="text-xs font-bold leading-4 text-inkSoft">
-                All docs received
-                <span className="mt-1 block font-semibold text-muted">Ready to prep</span>
+              <div className="pointer-events-none absolute -right-28 top-24 z-0 hidden max-w-[220px] animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md xl:flex">
+                <span className="text-lg">✅</span>
+                <div className="text-xs font-bold leading-4 text-inkSoft">
+                  All docs received
+                  <span className="mt-1 block font-semibold text-muted">Ready to prep</span>
+                </div>
               </div>
-            </div>
 
-            <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
-              <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
-              <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
-                <div className="flex items-end justify-between bg-neutral-900 px-5 pb-2 pt-5 text-white">
-                  <span className="text-sm font-semibold">9:02</span>
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-end gap-[2px]">
-                      <span className="h-1 w-[3px] rounded bg-white/80" />
-                      <span className="h-2 w-[3px] rounded bg-white/80" />
-                      <span className="h-3 w-[3px] rounded bg-white/80" />
-                      <span className="h-4 w-[3px] rounded bg-white/80" />
-                    </div>
-                    <div className="h-[10px] w-5 rounded border border-white/40 p-[1px]">
-                      <div className="h-full w-4 rounded bg-green-400" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 border-b border-white/5 bg-neutral-900 px-4 py-3 text-white">
-                  <span className="text-lg text-orange-300">‹</span>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brandDark text-sm">
-                    💬
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold">TaxPing</div>
-                    <div className="text-[10px] text-blue-300">your tax assistant</div>
-                  </div>
-                </div>
-
-                <div
-                  ref={messagesScrollRef}
-                  className="flex-1 min-h-0 overscroll-contain overflow-y-auto bg-[#0a0f1a] px-2 pb-4 pt-3"
-                >
-                  <div className="mb-3 text-center text-[10px] text-neutral-500">Today 9:02 AM</div>
-                  <div className="flex flex-col gap-2">
-                    {shownMessages.map((message, index) => (
-                      <div
-                        key={`${message.from}-${index}`}
-                        className={`flex flex-col ${message.from === 'out' ? 'items-end' : 'items-start'}`}
-                      >
-                        {message.isPhoto ? (
-                          <div className="rounded-[18px] rounded-br-md border border-brand/20 bg-[#0f1e38] p-1.5 text-center text-white">
-                            <div className="flex h-24 w-40 flex-col items-center justify-center gap-1 rounded-xl bg-gradient-to-br from-[#0a1428] to-[#060e1e]">
-                              <span className="text-xl">📷</span>
-                              <span className="text-[9px] text-blue-200">{message.photoName}</span>
-                              <span className="text-[10px] text-blue-400">{message.photoLabel}</span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            className={`max-w-[196px] rounded-[17px] px-3 py-2 text-[13px] leading-[1.45] text-white ${
-                              message.from === 'out'
-                                ? 'rounded-br-md bg-brand'
-                                : 'rounded-bl-md bg-[#1a2540]'
-                            }`}
-                          >
-                            {message.text}
-                          </div>
-                        )}
-                        {message.from === 'out' && !message.isPhoto ? (
-                          <span className="px-2 pt-1 text-[9px] text-neutral-500">Delivered</span>
-                        ) : null}
+              <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
+                <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
+                <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
+                  <div className="flex items-end justify-between bg-neutral-900 px-5 pb-2 pt-5 text-white">
+                    <span className="text-sm font-semibold">9:02</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-end gap-[2px]">
+                        <span className="h-1 w-[3px] rounded bg-white/80" />
+                        <span className="h-2 w-[3px] rounded bg-white/80" />
+                        <span className="h-3 w-[3px] rounded bg-white/80" />
+                        <span className="h-4 w-[3px] rounded bg-white/80" />
                       </div>
-                    ))}
-                    {isTyping ? (
-                      <div className="flex items-end gap-2 px-1">
-                        <div className="h-6 w-6 rounded-full bg-[#203152]" />
-                        <div className="flex items-center gap-1 rounded-2xl rounded-bl-md bg-[#1a2540] px-3 py-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] animate-bop" />
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] [animation-delay:0.2s] animate-bop" />
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] [animation-delay:0.4s] animate-bop" />
-                        </div>
+                      <div className="h-[10px] w-5 rounded border border-white/40 p-[1px]">
+                        <div className="h-full w-4 rounded bg-green-400" />
                       </div>
-                    ) : null}
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-center gap-2 border-t border-white/5 bg-[#0f1a2e] px-3 pb-4 pt-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1a2540] text-sm text-neutral-400">
-                    +
+                  <div className="flex items-center gap-3 border-b border-white/5 bg-neutral-900 px-4 py-3 text-white">
+                    <span className="text-lg text-orange-300">‹</span>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brandDark text-sm">
+                      💬
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold">TaxPing</div>
+                      <div className="text-[10px] text-blue-300">your tax assistant</div>
+                    </div>
                   </div>
-                  <div className="flex min-h-[30px] flex-1 items-center rounded-full border border-white/5 bg-[#1a2540] px-3 text-[13px] text-white">
-                    <span>{typedText}</span>
-                    {isTyping ? <span className="ml-0.5 h-4 w-[1.5px] bg-blue-300 animate-blink" /> : null}
-                  </div>
+
                   <div
-                    className={`flex h-7 w-7 items-center justify-center rounded-full bg-brand text-xs text-white transition ${
-                      isTyping ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                    }`}
+                    ref={messagesScrollRef}
+                    className="flex-1 min-h-0 overscroll-contain overflow-y-auto bg-[#0a0f1a] px-2 pb-4 pt-3"
                   >
-                    ↑
+                    <div className="mb-3 text-center text-[10px] text-neutral-500">Today 9:02 AM</div>
+                    <div className="flex flex-col gap-2">
+                      {shownMessages.map((message, index) => (
+                        <div
+                          key={`${message.from}-${index}`}
+                          className={`flex flex-col ${message.from === 'out' ? 'items-end' : 'items-start'}`}
+                        >
+                          {message.isPhoto ? (
+                            <div className="rounded-[18px] rounded-br-md border border-brand/20 bg-[#0f1e38] p-1.5 text-center text-white">
+                              <div className="flex h-24 w-40 flex-col items-center justify-center gap-1 rounded-xl bg-gradient-to-br from-[#0a1428] to-[#060e1e]">
+                                <span className="text-xl">📷</span>
+                                <span className="text-[9px] text-blue-200">{message.photoName}</span>
+                                <span className="text-[10px] text-blue-400">{message.photoLabel}</span>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              className={`max-w-[196px] rounded-[17px] px-3 py-2 text-[13px] leading-[1.45] text-white ${
+                                message.from === 'out'
+                                  ? 'rounded-br-md bg-brand'
+                                  : 'rounded-bl-md bg-[#1a2540]'
+                              }`}
+                            >
+                              {message.text}
+                            </div>
+                          )}
+                          {message.from === 'out' && !message.isPhoto ? (
+                            <span className="px-2 pt-1 text-[9px] text-neutral-500">Delivered</span>
+                          ) : null}
+                        </div>
+                      ))}
+                      {isTyping ? (
+                        <div className="flex items-end gap-2 px-1">
+                          <div className="h-6 w-6 rounded-full bg-[#203152]" />
+                          <div className="flex items-center gap-1 rounded-2xl rounded-bl-md bg-[#1a2540] px-3 py-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] animate-bop" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] [animation-delay:0.2s] animate-bop" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#5a80c0] [animation-delay:0.4s] animate-bop" />
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
+
+                  <div className="flex items-center gap-2 border-t border-white/5 bg-[#0f1a2e] px-3 pb-4 pt-2">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1a2540] text-sm text-neutral-400">
+                      +
+                    </div>
+                    <div className="flex min-h-[30px] flex-1 items-center rounded-full border border-white/5 bg-[#1a2540] px-3 text-[13px] text-white">
+                      <span>{typedText}</span>
+                      {isTyping ? <span className="ml-0.5 h-4 w-[1.5px] bg-blue-300 animate-blink" /> : null}
+                    </div>
+                    <div
+                      className={`flex h-7 w-7 items-center justify-center rounded-full bg-brand text-xs text-white transition ${
+                        isTyping ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                      }`}
+                    >
+                      ↑
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 grid w-[270px] gap-3 xl:hidden">
+              <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md">
+                <span className="text-lg">📄</span>
+                <div className="text-xs font-bold leading-4 text-inkSoft">
+                  Johnson_Mark_W2_2025.pdf
+                  <span className="mt-1 block font-semibold text-muted">Auto-named · Saved to Drive</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md">
+                <span className="text-lg">✅</span>
+                <div className="text-xs font-bold leading-4 text-inkSoft">
+                  All docs received
+                  <span className="mt-1 block font-semibold text-muted">Ready to prep</span>
                 </div>
               </div>
             </div>
