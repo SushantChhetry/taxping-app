@@ -768,19 +768,32 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="mx-auto max-w-3xl">
-            <div className="overflow-hidden rounded-3xl border border-white/20 bg-white shadow-float">
-              <iframe title="Join Early Access" src={TALLY_EMBED_URL} loading="lazy" className="h-[820px] w-full" />
+          <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
+            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+                Join early access
+              </div>
+              <div className="text-xs font-semibold text-white/60">Tally</div>
             </div>
+            <div className="bg-[#f2f2f7] p-2 sm:p-3">
+              <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+                <iframe
+                  title="Join Early Access"
+                  src={TALLY_EMBED_URL}
+                  loading="lazy"
+                  className="block h-[820px] w-full border-0"
+                />
+              </div>
+            </div>
+          </div>
             <a
               href={TALLY_RESPONDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex rounded-full bg-white px-8 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
+              className="mt-7 inline-flex w-full max-w-md justify-center rounded-full bg-white px-8 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
             >
               Open the form in a new tab →
             </a>
-          </div>
 
           <p className="mt-5 text-sm font-semibold text-white/55">
             No credit card. No commitment. Every application gets a personal reply within 48 hours.
