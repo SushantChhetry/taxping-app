@@ -34,19 +34,22 @@ const tickerItems = [
 const howItWorks = [
   {
     number: '01',
-    icon: '📲',
+    reaction: '📲',
+    side: 'out' as const,
     title: "You add a client's number",
     text: 'Takes 30 seconds. TaxPing sends the first text automatically — no script to write, nothing to configure on their end.'
   },
   {
     number: '02',
-    icon: '🤖',
+    reaction: '🤖',
+    side: 'in' as const,
     title: 'AI guides them over SMS',
     text: 'Asks for each document. Answers “what’s a 1099?” Sends gentle reminders if they go quiet. You stay completely out of it.'
   },
   {
     number: '03',
-    icon: '📁',
+    reaction: '📁',
+    side: 'in' as const,
     title: 'Files appear in your Drive',
     text: 'Auto-named, auto-organized. Johnson_Mark_W2_2025.pdf lands exactly where you need it — ready the moment it arrives.'
   }
@@ -461,22 +464,52 @@ export default function LandingPage() {
             to get documents from clients who will not use a portal.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {howItWorks.map((item) => (
-              <article
-                key={item.number}
-                className="rounded-3xl border border-transparent bg-sand p-8 transition hover:-translate-y-1.5 hover:border-brand/20 hover:shadow-float"
-              >
-                <div className="mb-3 font-display text-6xl font-black tracking-tight text-brand/15">
-                  {item.number}
+          <div className="mx-auto max-w-4xl">
+            <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+              <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
+                  iMessage preview
                 </div>
-                <div className="mb-4 text-3xl">{item.icon}</div>
-                <h3 className="mb-3 font-display text-2xl font-bold tracking-tight text-ink">
-                  {item.title}
-                </h3>
-                <p className="text-sm font-medium leading-7 text-inkSoft">{item.text}</p>
-              </article>
-            ))}
+                <div className="text-xs font-semibold text-muted">TaxPing</div>
+              </div>
+
+              <div className="space-y-6 bg-[#f2f2f7] px-6 py-8">
+                {howItWorks.map((item) => {
+                  const isOut = item.side === 'out';
+                  return (
+                    <div key={item.number} className="space-y-2">
+                      <div className="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-muted/80">
+                        Step {item.number}
+                      </div>
+                      <div className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
+                        <div
+                          className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+                            isOut
+                              ? 'rounded-br-md bg-brand text-white'
+                              : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+                          }`}
+                        >
+                          <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+                            {item.title}
+                          </div>
+                          <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
+                            {item.text}
+                          </div>
+
+                          <div
+                            className={`pointer-events-none absolute -bottom-3 ${
+                              isOut ? 'right-4' : 'left-4'
+                            } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                          >
+                            {item.reaction}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
