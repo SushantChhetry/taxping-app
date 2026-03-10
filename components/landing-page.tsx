@@ -20,7 +20,7 @@ type Message = {
 };
 
 const tickerItems = [
-  'Works with Drake, Lacerte, ProSeries',
+  'No client portal required',
   'Clients never create an account',
   'No Twilio setup',
   'W-2 photo → named PDF in your folder',
@@ -286,36 +286,38 @@ export default function LandingPage() {
         <div className="animate-fadeInUpSoft">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">
             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulseSoft" />
-            Recruiting 10 founding spots · December 2026
+            Founding cohort now open · 10 spots
           </div>
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-muted">
-            Document collection, simplified
+            For solo preparers and small tax firms
           </p>
-	          <h1 className="display-title mb-5 text-5xl font-black leading-[0.98] md:text-7xl">
-	            It&apos;s February.
-	            <br />
-	            The W-2 is missing.
-	            <br />
-	            Your email is unanswered — and the return can&apos;t start.
-	          </h1>
-	          <p className="mb-4 max-w-xl text-lg font-semibold leading-8 text-inkSoft">
-	            Your clients will text a photo in 30 seconds and ignore a portal login for three weeks.
-	          </p>
-	          <p className="body-copy mb-8 max-w-xl">
-	            TaxPing collects documents over plain SMS — <strong className="font-extrabold text-ink">no portal, no app, no password</strong> — and drops them into your Drive named and organized.
-	          </p>
+          <h1 className="display-title mb-5 text-5xl font-black leading-[0.98] md:text-7xl">
+            Collect tax documents over text.
+            <br />
+            TaxPing follows up for you.
+            <br />
+            Files arrive named and organized.
+          </h1>
+          <p className="mb-4 max-w-xl text-lg font-semibold leading-8 text-inkSoft">
+            Clients reply in the same text thread they already know how to use — no portal login, no app,
+            no password reset.
+          </p>
+          <p className="body-copy mb-8 max-w-xl">
+            TaxPing handles follow-ups automatically and drops each document into your Drive or Dropbox,
+            ready for the return.
+          </p>
 
-	          <div className="mb-8 inline-flex items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3">
-	            <span className="text-lg">⏱️</span>
-	            <div className="text-sm font-bold text-inkSoft">
-	              Avg. <span className="font-black text-ink">11 days</span> to collect docs{' '}
-	              <span className="mx-1 text-brand">→</span>{' '}
-	              <span className="font-black text-brand">3 days</span> with TaxPing
-	              <span className="mt-0.5 block text-xs font-semibold text-muted">
-	                from “waiting on a W-2” to “ready to start”
-	              </span>
-	            </div>
-	          </div>
+          <div className="mb-8 inline-flex items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3">
+            <span className="text-lg">⏱️</span>
+            <div className="text-sm font-bold text-inkSoft">
+              <span className="font-black text-ink">15-minute setup</span>
+              <span className="mx-1 text-brand">→</span>
+              <span className="font-black text-brand">no client portal required</span>
+              <span className="mt-0.5 block text-xs font-semibold text-muted">
+                plain SMS collection with auto-follow-ups and organized docs
+              </span>
+            </div>
+          </div>
 
 	          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
 	            <a
@@ -331,16 +333,14 @@ export default function LandingPage() {
 	            </Link>
 	          </div>
 
-	          <div className="mt-4 text-sm font-semibold text-muted">
-	            Built for solo preparers on <span className="font-extrabold text-ink">Drake</span>,{' '}
-	            <span className="font-extrabold text-ink">Lacerte</span>, and{' '}
-	            <span className="font-extrabold text-ink">ProSeries</span>.
-	          </div>
+          <div className="mt-4 text-sm font-semibold text-muted">
+            Fits the workflow you already use — without asking clients to learn a portal.
+          </div>
 
-	          <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-muted">
-	            <span className="h-2 w-2 rounded-full bg-green-500" />
-	            Open to solo preparers with <span className="font-extrabold text-ink">75–400 clients</span> ·{' '}
-		            <span className="font-extrabold text-brand">auto-organized docs in Drive</span>
+          <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-muted">
+            <span className="h-2 w-2 rounded-full bg-green-500" />
+            Open to firms with <span className="font-extrabold text-ink">75–400 clients</span> ·{' '}
+            <span className="font-extrabold text-brand">auto-organized docs in Drive</span>
           </div>
         </div>
 
@@ -799,9 +799,9 @@ export default function LandingPage() {
 	                <p className="text-center text-xs font-semibold text-muted">
 		                  No credit card required.
 	                </p>
-	                <p className="text-center text-xs font-semibold text-muted">
-	                  Built for solo preparers on Drake, Lacerte, and ProSeries.
-	                </p>
+                <p className="text-center text-xs font-semibold text-muted">
+                  Built for solo preparers and small tax firms.
+                </p>
 	              </div>
 	            </div>
 	          </Reveal>
