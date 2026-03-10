@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 const TALLY_FORM_ID = process.env.NEXT_PUBLIC_TALLY_FORM_ID || 'RG48Ll';
 const TALLY_RESPONDER_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
@@ -196,8 +196,13 @@ function useSmsDemo() {
 export default function LandingPage() {
   const [showBadge, setShowBadge] = useState(false);
   const spotsLeft = 10;
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const { shownMessages, typedText, isTyping } = useSmsDemo();
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }, [shownMessages.length, isTyping]);
 
   useEffect(() => {
     const onScroll = () => setShowBadge(window.scrollY > 500);
@@ -320,7 +325,7 @@ export default function LandingPage() {
           <div className="relative">
             <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
-            <div className="absolute -left-16 bottom-14 hidden animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
+            <div className="absolute -left-16 bottom-14 z-20 hidden animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
               <span className="text-lg">📄</span>
               <div className="text-xs font-bold leading-4 text-inkSoft">
                 Johnson_Mark_W2_2025.pdf
@@ -328,7 +333,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="absolute -right-14 top-24 hidden animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
+            <div className="absolute -right-14 top-24 z-20 hidden animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
               <span className="text-lg">✅</span>
               <div className="text-xs font-bold leading-4 text-inkSoft">
                 All docs received
@@ -336,9 +341,9 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="relative h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
+            <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
               <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
-              <div className="flex h-full flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
+              <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
                 <div className="flex items-end justify-between bg-neutral-900 px-5 pb-2 pt-5 text-white">
                   <span className="text-sm font-semibold">9:02</span>
                   <div className="flex items-center gap-2">
@@ -365,7 +370,7 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <div className="flex-1 overflow-hidden bg-[#0a0f1a] px-2 pb-2 pt-3">
+                <div className="flex-1 min-h-0 overflow-y-auto bg-[#0a0f1a] px-2 pb-4 pt-3">
                   <div className="mb-3 text-center text-[10px] text-neutral-500">Today 9:02 AM</div>
                   <div className="flex flex-col gap-2">
                     {shownMessages.map((message, index) => (
@@ -407,6 +412,7 @@ export default function LandingPage() {
                         </div>
                       </div>
                     ) : null}
+                    <div ref={messagesEndRef} />
                   </div>
                 </div>
 
