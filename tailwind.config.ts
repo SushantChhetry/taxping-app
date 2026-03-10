@@ -43,13 +43,23 @@ const config: Config = {
         bop: {
           '0%, 60%, 100%': { transform: 'translateY(0)' },
           '30%': { transform: 'translateY(-4px)' }
+        },
+        fadeInSoft: {
+          from: { opacity: '0' },
+          to: { opacity: '1' }
+        },
+        fadeInUpSoft: {
+          from: { opacity: '0', transform: 'translateY(12px)' },
+          to: { opacity: '1', transform: 'translateY(0)' }
         }
       },
       animation: {
         ticker: 'ticker 32s linear infinite',
         pulseSoft: 'pulseSoft 2s ease-in-out infinite',
         blink: 'blink 1s step-end infinite',
-        bop: 'bop 1.2s ease-in-out infinite'
+        bop: 'bop 1.2s ease-in-out infinite',
+        fadeInSoft: 'fadeInSoft 650ms ease-out both',
+        fadeInUpSoft: 'fadeInUpSoft 750ms cubic-bezier(0.16, 1, 0.3, 1) both'
       }
     }
   },

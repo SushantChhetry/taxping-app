@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import { Reveal } from './reveal';
+
 const TALLY_FORM_ID = process.env.NEXT_PUBLIC_TALLY_FORM_ID || 'RG48Ll';
 const TALLY_RESPONDER_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
 const TALLY_EMBED_URL = `https://tally.so/embed/${TALLY_FORM_ID}?hideTitle=1&transparentBackground=1`;
@@ -269,7 +271,7 @@ export default function LandingPage() {
       </header>
 
       <section className="section-shell grid min-h-[calc(100vh-68px)] items-center gap-12 py-10 md:grid-cols-2 md:py-16">
-        <div>
+        <div className="animate-fadeInUpSoft">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">
             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulseSoft" />
             Recruiting 10 founding members · December 2026
@@ -330,10 +332,10 @@ export default function LandingPage() {
           </div>
         </div>
 
-          <div className="flex justify-center">
-            <div className="flex flex-col items-center">
-              <div className="relative">
-                <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
+        <div className="[animation-delay:120ms] animate-fadeInUpSoft flex justify-center">
+          <div className="flex flex-col items-center">
+            <div className="relative">
+              <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
                 <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
                   <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
@@ -450,73 +452,76 @@ export default function LandingPage() {
 
       <section id="how" className="bg-white py-24">
         <div className="section-shell">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
-            <span className="h-0.5 w-5 rounded bg-brand" />
-            How it works
-          </div>
-          <h2 className="display-title mb-4 max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
-            Simple enough to
-            <br />
-            explain in three steps.
-          </h2>
-          <p className="body-copy mb-14 max-w-2xl">
-            Works alongside your existing process. No replacement, no disruption — just a better way
-            to get documents from clients who will not use a portal.
-          </p>
+          <Reveal className="w-full">
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+              <span className="h-0.5 w-5 rounded bg-brand" />
+              How it works
+            </div>
+            <h2 className="display-title mb-4 max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
+              Simple enough to
+              <br />
+              explain in three steps.
+            </h2>
+            <p className="body-copy mb-14 max-w-2xl">
+              Works alongside your existing process. No replacement, no disruption — just a better way
+              to get documents from clients who will not use a portal.
+            </p>
 
-          <div className="mx-auto max-w-4xl">
-            <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
-              <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
-                <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
-                  Messages
+            <div className="mx-auto max-w-4xl">
+              <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+                <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
+                    Messages
+                  </div>
+                  <div className="text-xs font-semibold text-muted">TaxPing</div>
                 </div>
-                <div className="text-xs font-semibold text-muted">TaxPing</div>
-              </div>
 
-              <div className="space-y-6 bg-[#f2f2f7] px-6 py-8">
-                {howItWorks.map((item) => {
-                  const isOut = item.side === 'out';
-                  return (
-                    <div key={item.number} className="space-y-2">
-                      <div className="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-muted/80">
-                        Step {item.number}
-                      </div>
-                      <div className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
-                        <div
-                          className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
-                            isOut
-                              ? 'rounded-br-md bg-brand text-white'
-                              : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
-                          }`}
-                        >
-                          <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
-                            {item.title}
-                          </div>
-                          <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
-                            {item.text}
-                          </div>
-
+                <div className="space-y-6 bg-[#f2f2f7] px-6 py-8">
+                  {howItWorks.map((item) => {
+                    const isOut = item.side === 'out';
+                    return (
+                      <div key={item.number} className="space-y-2">
+                        <div className="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-muted/80">
+                          Step {item.number}
+                        </div>
+                        <div className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
                           <div
-                            className={`pointer-events-none absolute -bottom-3 ${
-                              isOut ? 'right-4' : 'left-4'
-                            } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                            className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+                              isOut
+                                ? 'rounded-br-md bg-brand text-white'
+                                : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+                            }`}
                           >
-                            {item.reaction}
+                            <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+                              {item.title}
+                            </div>
+                            <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
+                              {item.text}
+                            </div>
+
+                            <div
+                              className={`pointer-events-none absolute -bottom-3 ${
+                                isOut ? 'right-4' : 'left-4'
+                              } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                            >
+                              {item.reaction}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-        <section className="relative overflow-hidden bg-forest py-24 text-white">
-          <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
-          <div className="section-shell relative">
+      <section className="relative overflow-hidden bg-forest py-24 text-white">
+        <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
+        <div className="section-shell relative">
+          <Reveal className="w-full">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
               <span className="h-0.5 w-5 rounded bg-white/30" />
               Built for solos
@@ -571,11 +576,13 @@ export default function LandingPage() {
                 })}
               </div>
             </div>
-          </div>
-        </section>
+          </Reveal>
+        </div>
+      </section>
 
-        <section className="bg-sand py-24">
-          <div className="section-shell">
+      <section className="bg-sand py-24">
+        <div className="section-shell">
+          <Reveal className="w-full">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
               <span className="h-0.5 w-5 rounded bg-brand" />
               Sound familiar?
@@ -617,175 +624,185 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
+          </Reveal>
+        </div>
+      </section>
 
       <section id="pricing" className="border-t border-sand3 bg-white py-24">
         <div className="section-shell grid gap-14 md:grid-cols-2 md:items-start">
-          <div>
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
-              <span className="h-0.5 w-5 rounded bg-brand" />
-              Early access
-            </div>
-            <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
-              Early access for
-              <br />
-              small firms & solo
-              <br />
-              tax pros.
-            </h2>
-            <p className="body-copy mb-6 max-w-xl">
-              We&apos;re inviting a small group of tax professionals to test TaxPing and help shape the
-              product.
-            </p>
-            <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
-              <span className="text-xl">💡</span>
-              <p>
-                Early users will receive discounted pricing when TaxPing launches. Pricing will be
-                designed for small firms and solo tax professionals.
+          <Reveal className="w-full">
+            <div>
+              <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+                <span className="h-0.5 w-5 rounded bg-brand" />
+                Early access
+              </div>
+              <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
+                Early access for
+                <br />
+                small firms & solo
+                <br />
+                tax pros.
+              </h2>
+              <p className="body-copy mb-6 max-w-xl">
+                We&apos;re inviting a small group of tax professionals to test TaxPing and help shape the
+                product.
               </p>
+              <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
+                <span className="text-xl">💡</span>
+                <p>
+                  Early users will receive discounted pricing when TaxPing launches. Pricing will be
+                  designed for small firms and solo tax professionals.
+                </p>
+              </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
-            <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">Messages</div>
-              <div className="text-xs font-semibold text-muted">TaxPing</div>
-            </div>
-
-            <div className="space-y-4 bg-[#f2f2f7] px-6 py-8">
-              <div className="flex justify-end">
-                <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
-                  Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
-                  <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
-                    🔥
-                  </div>
-                </div>
+          <Reveal className="w-full" delayMs={120}>
+            <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+              <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">Messages</div>
+                <div className="text-xs font-semibold text-muted">TaxPing</div>
               </div>
 
-              <div className="flex justify-start">
-                <div className="relative max-w-[560px] rounded-3xl rounded-bl-md border border-sand3 bg-white px-5 py-4 text-[15px] font-semibold leading-7 text-inkSoft shadow-sm">
-                  <div className="font-display text-base font-black tracking-tight text-ink">
-                    What you get
-                  </div>
-                  <ul className="mt-2 space-y-2 text-sm font-semibold leading-7 text-inkSoft">
-                    {seasonFeatures.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-[2px] flex h-5 w-5 items-center justify-center rounded-full bg-brand/10 text-[11px] font-black text-brand">
-                          ✓
-                        </span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="pointer-events-none absolute -bottom-3 left-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
-                    ✅
+              <div className="space-y-4 bg-[#f2f2f7] px-6 py-8">
+                <div className="flex justify-end">
+                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+                    Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
+                    <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                      🔥
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex justify-end">
-                <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
-                  Early users get discounted launch pricing.
-                  <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
-                    🏷️
+                <div className="flex justify-start">
+                  <div className="relative max-w-[560px] rounded-3xl rounded-bl-md border border-sand3 bg-white px-5 py-4 text-[15px] font-semibold leading-7 text-inkSoft shadow-sm">
+                    <div className="font-display text-base font-black tracking-tight text-ink">
+                      What you get
+                    </div>
+                    <ul className="mt-2 space-y-2 text-sm font-semibold leading-7 text-inkSoft">
+                      {seasonFeatures.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2">
+                          <span className="mt-[2px] flex h-5 w-5 items-center justify-center rounded-full bg-brand/10 text-[11px] font-black text-brand">
+                            ✓
+                          </span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="pointer-events-none absolute -bottom-3 left-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                      ✅
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <a
-                href={TALLY_RESPONDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 block rounded-full bg-brand px-6 py-4 text-center text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
-              >
-                Join Early Access →
-              </a>
-              <p className="text-center text-xs font-semibold text-muted">
-                No credit card to reserve your spot.
-              </p>
+                <div className="flex justify-end">
+                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+                    Early users get discounted launch pricing.
+                    <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                      🏷️
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  href={TALLY_RESPONDER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 block rounded-full bg-brand px-6 py-4 text-center text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
+                >
+                  Join Early Access →
+                </a>
+                <p className="text-center text-xs font-semibold text-muted">
+                  No credit card to reserve your spot.
+                </p>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
         <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
         <div className="section-shell relative max-w-4xl">
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
-            <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
-            <span>
-              <strong>{spotsLeft}</strong> founding spots remaining
-            </span>
-          </div>
-          <h2 className="font-display mb-4 text-4xl font-black tracking-tight text-white md:text-7xl">
-            Ten spots.
-            <br />
-            <span className="italic text-white/80">One tax season</span> to change everything.
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
-            Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
-          </p>
-
-          <div className="mx-auto mb-10 max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
-            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                Messages
-              </div>
-              <div className="text-xs font-semibold text-white/60">Early access</div>
+          <Reveal className="w-full">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
+              <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
+              <span>
+                <strong>{spotsLeft}</strong> founding spots remaining
+              </span>
             </div>
-            <div className="space-y-4 bg-[#f2f2f7] px-6 py-8 text-ink">
-              {[
-                ['🔑', 'Early access before public launch'],
-                ['💬', 'Direct line to the founder'],
-                ['🏷️', 'Discounted launch pricing'],
-                ['🔧', 'Shape features before anyone else']
-              ].map(([icon, text], index) => {
-                const isOut = index % 2 === 0;
-                return (
-                  <div key={text} className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
-                    <div
-                      className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
-                        isOut
-                          ? 'rounded-br-md bg-brand text-white'
-                          : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
-                      }`}
-                    >
-                      <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
-                        {text}
-                      </div>
+            <h2 className="font-display mb-4 text-4xl font-black tracking-tight text-white md:text-7xl">
+              Ten spots.
+              <br />
+              <span className="italic text-white/80">One tax season</span> to change everything.
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
+              Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
+            </p>
+          </Reveal>
+
+          <Reveal className="w-full" delayMs={100}>
+            <div className="mx-auto mb-10 max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+                  Messages
+                </div>
+                <div className="text-xs font-semibold text-white/60">Early access</div>
+              </div>
+              <div className="space-y-4 bg-[#f2f2f7] px-6 py-8 text-ink">
+                {[
+                  ['🔑', 'Early access before public launch'],
+                  ['💬', 'Direct line to the founder'],
+                  ['🏷️', 'Discounted launch pricing'],
+                  ['🔧', 'Shape features before anyone else']
+                ].map(([icon, text], index) => {
+                  const isOut = index % 2 === 0;
+                  return (
+                    <div key={text} className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
                       <div
-                        className={`pointer-events-none absolute -bottom-3 ${
-                          isOut ? 'right-4' : 'left-4'
-                        } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                        className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+                          isOut
+                            ? 'rounded-br-md bg-brand text-white'
+                            : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+                        }`}
                       >
-                        {icon}
+                        <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+                          {text}
+                        </div>
+                        <div
+                          className={`pointer-events-none absolute -bottom-3 ${
+                            isOut ? 'right-4' : 'left-4'
+                          } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                        >
+                          {icon}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
-            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                Join early access
+          <Reveal className="w-full" delayMs={160}>
+            <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+                  Join early access
+                </div>
+                <div className="text-xs font-semibold text-white/60">Tally</div>
               </div>
-              <div className="text-xs font-semibold text-white/60">Tally</div>
-            </div>
-            <div className="bg-[#f2f2f7] p-2 sm:p-3">
-              <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-                <iframe
-                  title="Join Early Access"
-                  src={TALLY_EMBED_URL}
-                  loading="lazy"
-                  className="block h-[820px] w-full border-0"
-                />
+              <div className="bg-[#f2f2f7] p-2 sm:p-3">
+                <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+                  <iframe
+                    title="Join Early Access"
+                    src={TALLY_EMBED_URL}
+                    loading="lazy"
+                    className="block h-[820px] w-full border-0"
+                  />
+                </div>
               </div>
             </div>
-          </div>
             <a
               href={TALLY_RESPONDER_URL}
               target="_blank"
@@ -794,10 +811,13 @@ export default function LandingPage() {
             >
               Open the form in a new tab →
             </a>
+          </Reveal>
 
-          <p className="mt-5 text-sm font-semibold text-white/55">
-            No credit card. No commitment. Every application gets a personal reply within 48 hours.
-          </p>
+          <Reveal className="w-full" delayMs={220}>
+            <p className="mt-5 text-sm font-semibold text-white/55">
+              No credit card. No commitment. Every application gets a personal reply within 48 hours.
+            </p>
+          </Reveal>
         </div>
       </section>
 
