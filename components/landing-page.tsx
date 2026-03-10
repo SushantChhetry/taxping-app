@@ -468,7 +468,7 @@ export default function LandingPage() {
             <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
               <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
                 <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
-                  iMessage preview
+                  Messages
                 </div>
                 <div className="text-xs font-semibold text-muted">TaxPing</div>
               </div>
@@ -514,141 +514,204 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-forest py-24 text-white">
-        <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
-        <div className="section-shell relative">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-            <span className="h-0.5 w-5 rounded bg-white/30" />
-            Built for solos
-          </div>
-          <h2 className="font-display mb-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-            Everything you need.
-            <br />
-            Nothing extra.
-          </h2>
-          <p className="mb-14 max-w-2xl text-lg leading-8 text-white/65">
-            No onboarding call. No IT department. No asking clients to remember a password. If they
-            can text, they can use TaxPing.
-          </p>
+        <section className="relative overflow-hidden bg-forest py-24 text-white">
+          <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
+          <div className="section-shell relative">
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+              <span className="h-0.5 w-5 rounded bg-white/30" />
+              Built for solos
+            </div>
+            <h2 className="font-display mb-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+              Everything you need.
+              <br />
+              Nothing extra.
+            </h2>
+            <p className="mb-14 max-w-2xl text-lg leading-8 text-white/65">
+              No onboarding call. No IT department. No asking clients to remember a password. If they
+              can text, they can use TaxPing.
+            </p>
 
-          <div className="grid gap-px overflow-hidden rounded-3xl bg-white/10 md:grid-cols-3">
-            {features.map(([icon, title, text]) => (
-              <article key={title} className="bg-white/5 p-7 transition hover:bg-white/10">
-                <div className="mb-4 text-2xl">{icon}</div>
-                <h3 className="mb-2 font-display text-xl font-bold text-white">{title}</h3>
-                <p className="text-sm font-medium leading-7 text-white/65">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-sand py-24">
-        <div className="section-shell">
-          <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
-            <span className="h-0.5 w-5 rounded bg-brand" />
-            Sound familiar?
-          </div>
-          <h2 className="display-title mb-3 max-w-3xl text-4xl font-extrabold md:text-5xl">
-            Every tax season,
-            <br />
-            the same problem.
-          </h2>
-          <p className="mb-12 max-w-2xl text-lg leading-8 text-muted">
-            We talked to dozens of solo preparers. Here&apos;s what kept coming up — almost word for
-            word.
-          </p>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <article
-                key={item.name}
-                className="rounded-3xl border border-sand3 bg-white p-8 transition hover:-translate-y-1.5 hover:border-brand/20 hover:shadow-float"
-              >
-                <div className="mb-4 text-sm">⭐⭐⭐⭐⭐</div>
-                <p className="mb-6 text-[15px] font-medium italic leading-8 text-inkSoft">{item.quote}</p>
-                <div className="mb-4 h-0.5 w-8 rounded bg-sand3" />
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sand2">👤</div>
-                  <div>
-                    <div className="text-sm font-bold text-ink">{item.name}</div>
-                    <div className="text-xs font-semibold text-muted">{item.role}</div>
-                  </div>
+            <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.25)]">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+                  Messages
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-        <section id="pricing" className="border-t border-sand3 bg-white py-24">
-          <div className="section-shell grid gap-14 md:grid-cols-2 md:items-center">
-            <div>
-              <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
-                <span className="h-0.5 w-5 rounded bg-brand" />
-                Early access
+                <div className="text-xs font-semibold text-white/55">TaxPing</div>
               </div>
-              <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
-                Early access for
-                <br />
-                small firms & solo
-                <br />
-                tax pros.
-              </h2>
-              <p className="body-copy mb-6 max-w-xl">
-                We&apos;re inviting a small group of tax professionals to test TaxPing and help shape
-                the product.
-              </p>
-              <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
-                <span className="text-xl">💡</span>
-                <p>
-                  Early users will receive discounted pricing when TaxPing launches. Pricing will be
-                  designed for small firms and solo tax professionals.
-                </p>
+
+              <div className="space-y-4 bg-[#f2f2f7] px-6 py-8 text-ink">
+                {features.map(([icon, title, text], index) => {
+                  const isOut = index % 2 === 0;
+                  return (
+                    <div key={title} className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
+                      <div
+                        className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+                          isOut
+                            ? 'rounded-br-md bg-brand text-white'
+                            : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+                        }`}
+                      >
+                        <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+                          {title}
+                        </div>
+                        <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
+                          {text}
+                        </div>
+
+                        <div
+                          className={`pointer-events-none absolute -bottom-3 ${
+                            isOut ? 'right-4' : 'left-4'
+                          } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                        >
+                          {icon}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="rounded-[28px] bg-forest p-10 text-white shadow-[0_24px_64px_rgba(13,27,46,0.2)]">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/15 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulseSoft" />
-                Limited early access
-              </div>
-              <div className="mb-2 flex items-end gap-3 font-display">
-                <span className="text-7xl font-black leading-none tracking-tighter">{spotsLeft}</span>
-                <span className="pb-2 text-base font-extrabold text-white/65">spots remaining</span>
-              </div>
-              <div className="mb-8 text-sm font-semibold text-white/55">
-                Join early access to shape TaxPing and get discounted launch pricing.
-              </div>
-              <div className="mb-8 h-px w-full bg-white/10" />
-              <ul className="mb-8 space-y-4">
-                {seasonFeatures.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm font-semibold text-white/85">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-lg border border-brand/30 bg-brand/15 text-xs text-blue-300">
-                    ✓
-                  </span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={TALLY_RESPONDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-full bg-brand px-6 py-4 text-center text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
-            >
-              Join Early Access →
-            </a>
-            <p className="mt-4 text-center text-xs font-semibold text-white/35">
-              No credit card to reserve your spot.
+        <section className="bg-sand py-24">
+          <div className="section-shell">
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+              <span className="h-0.5 w-5 rounded bg-brand" />
+              Sound familiar?
+            </div>
+            <h2 className="display-title mb-3 max-w-3xl text-4xl font-extrabold md:text-5xl">
+              Every tax season,
+              <br />
+              the same problem.
+            </h2>
+            <p className="mb-12 max-w-2xl text-lg leading-8 text-muted">
+              We talked to dozens of solo preparers. Here&apos;s what kept coming up — almost word for
+              word.
             </p>
+
+            <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+              <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
+                  Messages
+                </div>
+                <div className="text-xs font-semibold text-muted">Tax pros</div>
+              </div>
+
+              <div className="space-y-5 bg-[#f2f2f7] px-6 py-8">
+                {testimonials.map((item) => (
+                  <div key={item.name} className="space-y-1.5">
+                    <div className="flex justify-start">
+                      <div className="relative max-w-[560px] rounded-3xl rounded-bl-md border border-sand3 bg-white px-5 py-4 text-[15px] font-semibold leading-7 text-inkSoft shadow-sm">
+                        <div className="mb-2 text-[12px] font-bold text-muted">⭐⭐⭐⭐⭐</div>
+                        <div className="italic leading-8">{item.quote}</div>
+                        <div className="pointer-events-none absolute -bottom-3 left-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                          ⭐️
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pl-2 text-[11px] font-semibold text-muted">
+                      {item.name} · {item.role}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+      <section id="pricing" className="border-t border-sand3 bg-white py-24">
+        <div className="section-shell grid gap-14 md:grid-cols-2 md:items-start">
+          <div>
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+              <span className="h-0.5 w-5 rounded bg-brand" />
+              Early access
+            </div>
+            <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
+              Early access for
+              <br />
+              small firms & solo
+              <br />
+              tax pros.
+            </h2>
+            <p className="body-copy mb-6 max-w-xl">
+              We&apos;re inviting a small group of tax professionals to test TaxPing and help shape the
+              product.
+            </p>
+            <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
+              <span className="text-xl">💡</span>
+              <p>
+                Early users will receive discounted pricing when TaxPing launches. Pricing will be
+                designed for small firms and solo tax professionals.
+              </p>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+            <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">Messages</div>
+              <div className="text-xs font-semibold text-muted">TaxPing</div>
+            </div>
+
+            <div className="space-y-4 bg-[#f2f2f7] px-6 py-8">
+              <div className="flex justify-end">
+                <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+                  Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
+                  <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                    🔥
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-start">
+                <div className="relative max-w-[560px] rounded-3xl rounded-bl-md border border-sand3 bg-white px-5 py-4 text-[15px] font-semibold leading-7 text-inkSoft shadow-sm">
+                  <div className="font-display text-base font-black tracking-tight text-ink">
+                    What you get
+                  </div>
+                  <ul className="mt-2 space-y-2 text-sm font-semibold leading-7 text-inkSoft">
+                    {seasonFeatures.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="mt-[2px] flex h-5 w-5 items-center justify-center rounded-full bg-brand/10 text-[11px] font-black text-brand">
+                          ✓
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pointer-events-none absolute -bottom-3 left-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                    ✅
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+                  Early users get discounted launch pricing.
+                  <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+                    🏷️
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={TALLY_RESPONDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block rounded-full bg-brand px-6 py-4 text-center text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
+              >
+                Join Early Access →
+              </a>
+              <p className="text-center text-xs font-semibold text-muted">
+                No credit card to reserve your spot.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-        <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
-          <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-          <div className="section-shell relative max-w-4xl">
+      <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
+        <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+        <div className="section-shell relative max-w-4xl">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
             <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
             <span>
@@ -659,23 +722,50 @@ export default function LandingPage() {
             Ten spots.
             <br />
             <span className="italic text-white/80">One tax season</span> to change everything.
-            </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
-              Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
-            </p>
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
+            Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
+          </p>
 
-            <div className="mx-auto mb-9 grid max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto mb-10 max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
+            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+                Messages
+              </div>
+              <div className="text-xs font-semibold text-white/60">Early access</div>
+            </div>
+            <div className="space-y-4 bg-[#f2f2f7] px-6 py-8 text-ink">
               {[
                 ['🔑', 'Early access before public launch'],
                 ['💬', 'Direct line to the founder'],
                 ['🏷️', 'Discounted launch pricing'],
                 ['🔧', 'Shape features before anyone else']
-              ].map(([icon, text]) => (
-              <div key={text} className="border-white/10 p-6 not-last:border-b sm:not-last:border-r sm:not-last:border-b-0 lg:min-h-[120px]">
-                <div className="mb-2 text-2xl">{icon}</div>
-                <div className="text-sm font-bold leading-6 text-white/90">{text}</div>
-              </div>
-            ))}
+              ].map(([icon, text], index) => {
+                const isOut = index % 2 === 0;
+                return (
+                  <div key={text} className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
+                    <div
+                      className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+                        isOut
+                          ? 'rounded-br-md bg-brand text-white'
+                          : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+                      }`}
+                    >
+                      <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+                        {text}
+                      </div>
+                      <div
+                        className={`pointer-events-none absolute -bottom-3 ${
+                          isOut ? 'right-4' : 'left-4'
+                        } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+                      >
+                        {icon}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mx-auto max-w-3xl">
