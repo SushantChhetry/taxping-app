@@ -18,7 +18,6 @@ type Message = {
 const tickerItems = [
   'No portal required',
   '15-minute setup',
-  'Works with Drake & Lacerte',
   'Unlimited clients',
   'Auto-named files',
   'Just SMS — nothing to install',
@@ -29,7 +28,7 @@ const tickerItems = [
   'Smart follow-ups',
   'Built for solo preparers',
   'No per-client fees',
-  'ProSeries compatible'
+  'Works with your current workflow'
 ];
 
 const howItWorks = [
@@ -67,19 +66,19 @@ const testimonials = [
     quote:
       '“I send the portal link. They ignore it. I call. They say they’ll do it. Three weeks later I’m calling again. Every. Single. Client.”',
     name: 'Solo CPA',
-    role: '220 clients · Drake user'
+    role: '220 clients'
   },
   {
     quote:
       '“My clients are 60+. They will not use a portal. They don’t even know what a portal is. But they will absolutely text a photo.”',
     name: 'Enrolled Agent',
-    role: '310 clients · Lacerte user'
+    role: '310 clients'
   },
   {
     quote:
       '“TaxDome is built for a 20-person firm. I don’t need practice management. I need documents. Just the documents.”',
     name: '2-person firm',
-    role: '175 clients · ProSeries user'
+    role: '175 clients'
   }
 ];
 
@@ -252,7 +251,7 @@ export default function LandingPage() {
               How it works
             </Link>
             <Link href="#pricing" className="text-sm font-semibold text-muted transition hover:text-ink">
-              Pricing
+              Early access
             </Link>
             <a
               href={TALLY_RESPONDER_URL}
@@ -328,14 +327,14 @@ export default function LandingPage() {
           </div>
         </div>
 
-	        <div className="flex justify-center">
-	          <div className="flex flex-col items-center">
-	            <div className="relative">
-	              <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
+          <div className="flex justify-center">
+            <div className="flex flex-col items-center">
+              <div className="relative">
+                <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
-	              <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
-	                <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
-	                <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
+                <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
+                  <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
+                  <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
                   <div className="flex items-end justify-between bg-neutral-900 px-5 pb-2 pt-5 text-white">
                     <span className="text-sm font-semibold">9:02</span>
                     <div className="flex items-center gap-2">
@@ -426,12 +425,12 @@ export default function LandingPage() {
                       ↑
                     </div>
                   </div>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
       <section className="border-y border-sand3 bg-sand2 py-6">
         <div className="overflow-hidden">
@@ -458,8 +457,8 @@ export default function LandingPage() {
             explain in three steps.
           </h2>
           <p className="body-copy mb-14 max-w-2xl">
-            Works alongside Drake, Lacerte, and ProSeries. No replacement, no disruption — just a
-            better way to get documents from clients who will not use a portal.
+            Works alongside your existing process. No replacement, no disruption — just a better way
+            to get documents from clients who will not use a portal.
           </p>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -549,48 +548,49 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="pricing" className="border-t border-sand3 bg-white py-24">
-        <div className="section-shell grid gap-14 md:grid-cols-2 md:items-center">
-          <div>
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
-              <span className="h-0.5 w-5 rounded bg-brand" />
-              Pricing
-            </div>
-            <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
-              One price.
-              <br />
-              Whole season.
-              <br />
-              No surprises.
-            </h2>
-            <p className="body-copy mb-6 max-w-xl">
-              Flat rate covers your entire tax season —{' '}
-              <strong className="font-extrabold text-ink">unlimited clients, unlimited conversations.</strong>{' '}
-              No per-client fees, no usage limits, no gotchas at renewal.
-            </p>
-            <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
-              <span className="text-xl">⏳</span>
-              <p>
-                Founding member pricing locks in at <strong className="text-ink">$149/season forever</strong>{' '}
-                for the first 10 customers. After launch, it goes to $299.
+        <section id="pricing" className="border-t border-sand3 bg-white py-24">
+          <div className="section-shell grid gap-14 md:grid-cols-2 md:items-center">
+            <div>
+              <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+                <span className="h-0.5 w-5 rounded bg-brand" />
+                Early access
+              </div>
+              <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
+                Early access for
+                <br />
+                small firms & solo
+                <br />
+                tax pros.
+              </h2>
+              <p className="body-copy mb-6 max-w-xl">
+                We&apos;re inviting a small group of tax professionals to test TaxPing and help shape
+                the product.
               </p>
+              <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
+                <span className="text-xl">💡</span>
+                <p>
+                  Early users will receive discounted pricing when TaxPing launches. Pricing will be
+                  designed for small firms and solo tax professionals.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="rounded-[28px] bg-forest p-10 text-white shadow-[0_24px_64px_rgba(13,27,46,0.2)]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/15 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulseSoft" />
-              Founding Member Price
-            </div>
-            <div className="mb-2 flex items-start gap-1 font-display">
-              <span className="mt-3 text-3xl text-white/60">$</span>
-              <span className="text-8xl font-black leading-none tracking-tighter">149</span>
-            </div>
-            <div className="mb-8 text-sm font-semibold text-white/55">per tax season · unlimited clients</div>
-            <div className="mb-8 h-px w-full bg-white/10" />
-            <ul className="mb-8 space-y-4">
-              {seasonFeatures.map((feature) => (
-                <li key={feature} className="flex items-center gap-3 text-sm font-semibold text-white/85">
+            <div className="rounded-[28px] bg-forest p-10 text-white shadow-[0_24px_64px_rgba(13,27,46,0.2)]">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/15 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulseSoft" />
+                Limited early access
+              </div>
+              <div className="mb-2 flex items-end gap-3 font-display">
+                <span className="text-7xl font-black leading-none tracking-tighter">{spotsLeft}</span>
+                <span className="pb-2 text-base font-extrabold text-white/65">spots remaining</span>
+              </div>
+              <div className="mb-8 text-sm font-semibold text-white/55">
+                Join early access to shape TaxPing and get discounted launch pricing.
+              </div>
+              <div className="mb-8 h-px w-full bg-white/10" />
+              <ul className="mb-8 space-y-4">
+                {seasonFeatures.map((feature) => (
+                  <li key={feature} className="flex items-center gap-3 text-sm font-semibold text-white/85">
                   <span className="flex h-6 w-6 items-center justify-center rounded-lg border border-brand/30 bg-brand/15 text-xs text-blue-300">
                     ✓
                   </span>
@@ -613,9 +613,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
-        <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-        <div className="section-shell relative max-w-4xl">
+        <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
+          <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+          <div className="section-shell relative max-w-4xl">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
             <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
             <span>
@@ -626,18 +626,18 @@ export default function LandingPage() {
             Ten spots.
             <br />
             <span className="italic text-white/80">One tax season</span> to change everything.
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
-            Join early access in 60 seconds. Shape the product. Lock in $149/season — forever.
-          </p>
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
+              Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
+            </p>
 
-          <div className="mx-auto mb-9 grid max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ['🔑', 'Early access before public launch'],
-              ['💬', 'Direct line to the founder'],
-              ['🏷️', '$149/season locked forever'],
-              ['🔧', 'Shape features before anyone else']
-            ].map(([icon, text]) => (
+            <div className="mx-auto mb-9 grid max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ['🔑', 'Early access before public launch'],
+                ['💬', 'Direct line to the founder'],
+                ['🏷️', 'Discounted launch pricing'],
+                ['🔧', 'Shape features before anyone else']
+              ].map(([icon, text]) => (
               <div key={text} className="border-white/10 p-6 not-last:border-b sm:not-last:border-r sm:not-last:border-b-0 lg:min-h-[120px]">
                 <div className="mb-2 text-2xl">{icon}</div>
                 <div className="text-sm font-bold leading-6 text-white/90">{text}</div>
