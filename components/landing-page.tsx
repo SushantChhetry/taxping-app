@@ -20,18 +20,17 @@ type Message = {
 };
 
 const tickerItems = [
-  'No portal required',
-  '15-minute setup',
+  'Works with Drake, Lacerte, ProSeries',
+  'Clients never create an account',
+  'No Twilio setup',
+  'W-2 photo → named PDF in your folder',
+  'Auto follow-ups (you stop “just checking in”)',
+  'Google Drive + Dropbox sync',
   'Unlimited clients',
-  'Auto-named files',
-  'Just SMS — nothing to install',
-  'Google Drive sync',
-  'AI handles client questions',
-  'No client training',
-  'Dropbox sync',
-  'Smart follow-ups',
-  'Built for solo preparers',
   'No per-client fees',
+  'Just SMS — nothing to install',
+  'Answers “what’s a 1099?” automatically',
+  'Built for solo preparers',
   'Works with your current workflow'
 ];
 
@@ -40,50 +39,41 @@ const howItWorks = [
     number: '01',
     reaction: '📲',
     side: 'out' as const,
-    title: "You add a client's number",
-    text: 'Takes 30 seconds. TaxPing sends the first text automatically — no script to write, nothing to configure on their end.'
+    title: 'Stop sending the first follow-up',
+    text: 'When a return is blocked by a missing W-2, you don’t write the “just checking in” email. TaxPing starts the thread and keeps it moving.'
   },
   {
     number: '02',
     reaction: '🤖',
     side: 'in' as const,
-    title: 'AI guides them over SMS',
-    text: 'Asks for each document. Answers “what’s a 1099?” Sends gentle reminders if they go quiet. You stay completely out of it.'
+    title: 'Stop being the after-hours help desk',
+    text: 'Clients ask questions in the same text thread. TaxPing answers the basics and keeps the checklist simple enough for your 67-year-old clients.'
   },
   {
     number: '03',
     reaction: '📁',
     side: 'in' as const,
-    title: 'Files appear in your Drive',
-    text: 'Auto-named, auto-organized. Johnson_Mark_W2_2025.pdf lands exactly where you need it — ready the moment it arrives.'
+    title: 'Stop renaming and filing PDFs',
+    text: 'Documents land auto-named and organized in your Drive or Dropbox, ready to start the return the moment they arrive.'
   }
-];
-
-const features = [
-  ['💬', 'Pure SMS', 'Clients use their native Messages app. Nothing to download, no account to create, ever.'],
-  ['🏷️', 'Auto-named files', 'Every document renamed LastName_Type_Year before it hits your folder. Zero manual sorting.'],
-  ['🔔', 'Smart follow-ups', 'TaxPing nudges quiet clients automatically so you never have to send another “just checking in” email.'],
-  ['🤝', 'Handles questions', '“Do I need a 1099?” — answered automatically. You stop being the after-hours help desk.'],
-  ['☁️', 'Drive + Dropbox', 'Files land exactly where you already work. No new folder structure to learn or maintain.'],
-  ['⚡', '15-minute setup', 'From signup to first client text in under 15 minutes. No training call, no implementation guide.']
 ];
 
 const testimonials = [
   {
     quote:
-      '“I send the portal link. They ignore it. I call. They say they’ll do it. Three weeks later I’m calling again. Every. Single. Client.”',
+      '“I send the portal link. They ignore it. I call. They say they’ll do it. Three weeks later I’m calling again. Every. Single. Client. Now TaxPing sends the third reminder. I stopped counting.”',
     name: 'Solo CPA',
     role: '220 clients'
   },
   {
     quote:
-      '“My clients are 60+. They will not use a portal. They don’t even know what a portal is. But they will absolutely text a photo.”',
+      '“My clients are 60+. They will not use a portal. They don’t even know what a portal is. But they will absolutely text a photo. Now TaxPing asks for the W-2 by text and it shows up.”',
     name: 'Enrolled Agent',
     role: '310 clients'
   },
   {
     quote:
-      '“TaxDome is built for a 20-person firm. I don’t need practice management. I need documents. Just the documents.”',
+      '“TaxDome is built for a 20-person firm. I don’t need practice management. I need documents. Just the documents. Now TaxPing collects them and files them where I work.”',
     name: '2-person firm',
     role: '175 clients'
   }
@@ -302,56 +292,56 @@ export default function LandingPage() {
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-muted">
             Document collection, simplified
           </p>
-          <h1 className="display-title mb-5 text-5xl font-black leading-[0.98] md:text-7xl">
-            Stop chasing.
-            <br />
-            Start <span className="italic text-brand">texting.</span>
-          </h1>
-          <p className="body-copy mb-8 max-w-xl">
-            Your clients already know how to text. TaxPing meets them there —{' '}
-            <strong className="font-extrabold text-ink">no portal, no app, no password</strong> — and sends
-            their documents straight to your Drive.
-          </p>
+	          <h1 className="display-title mb-5 text-5xl font-black leading-[0.98] md:text-7xl">
+	            It&apos;s February.
+	            <br />
+	            The W-2 is missing.
+	            <br />
+	            Your email is unanswered — and the return can&apos;t start.
+	          </h1>
+	          <p className="mb-4 max-w-xl text-lg font-semibold leading-8 text-inkSoft">
+	            Your clients will text a photo in 30 seconds and ignore a portal login for three weeks.
+	          </p>
+	          <p className="body-copy mb-8 max-w-xl">
+	            TaxPing collects documents over plain SMS — <strong className="font-extrabold text-ink">no portal, no app, no password</strong> — and drops them into your Drive named and organized.
+	          </p>
 
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row">
-            <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3">
-              <span className="text-lg">⚡</span>
-              <div className="text-sm font-bold text-inkSoft">
-                15 minutes
-                <span className="mt-0.5 block text-xs font-semibold text-muted">
-                  to your first client text
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3">
-              <span className="text-lg">📱</span>
-              <div className="text-sm font-bold text-inkSoft">
-                Zero apps
-                <span className="mt-0.5 block text-xs font-semibold text-muted">
-                  clients need nothing new
-                </span>
-              </div>
-            </div>
-          </div>
+	          <div className="mb-8 inline-flex items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3">
+	            <span className="text-lg">⏱️</span>
+	            <div className="text-sm font-bold text-inkSoft">
+	              Avg. <span className="font-black text-ink">11 days</span> to collect docs{' '}
+	              <span className="mx-1 text-brand">→</span>{' '}
+	              <span className="font-black text-brand">3 days</span> with TaxPing
+	              <span className="mt-0.5 block text-xs font-semibold text-muted">
+	                from “waiting on a W-2” to “ready to start”
+	              </span>
+	            </div>
+	          </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href={TALLY_RESPONDER_URL}
-              target="_blank"
+	          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+	            <a
+	              href={TALLY_RESPONDER_URL}
+	              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
             >
               Join Early Access →
             </a>
-            <Link href="#how" className="text-sm font-bold text-inkSoft transition hover:text-brand">
-              See how it works →
-            </Link>
-          </div>
+	            <Link href="#how" className="text-sm font-bold text-inkSoft transition hover:text-brand">
+	              See how it works →
+	            </Link>
+	          </div>
 
-          <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-muted">
-            <span className="h-2 w-2 rounded-full bg-green-500" />
-            Open to solo preparers with <span className="font-extrabold text-ink">75–400 clients</span> ·{' '}
-            <span className="font-extrabold text-brand">10 spots only</span>
+	          <div className="mt-4 text-sm font-semibold text-muted">
+	            Built for solo preparers on <span className="font-extrabold text-ink">Drake</span>,{' '}
+	            <span className="font-extrabold text-ink">Lacerte</span>, and{' '}
+	            <span className="font-extrabold text-ink">ProSeries</span>.
+	          </div>
+
+	          <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-muted">
+	            <span className="h-2 w-2 rounded-full bg-green-500" />
+	            Open to solo preparers with <span className="font-extrabold text-ink">75–400 clients</span> ·{' '}
+	            <span className="font-extrabold text-brand">10 spots only</span>
           </div>
         </div>
 
@@ -473,19 +463,58 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 flex items-center gap-2 rounded-2xl border border-sand3 bg-white px-4 py-2.5 shadow-float">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-[11px]">✓</span>
-                <span className="text-[11px] font-bold text-inkSoft">
-                  Mark's file · <span className="text-green-600">2 of 2 docs received</span> · no action needed
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+	              <div className="mt-5 flex items-center gap-2 rounded-2xl border border-sand3 bg-white px-4 py-2.5 shadow-float">
+	                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-[11px]">✓</span>
+	                <span className="text-[11px] font-bold text-inkSoft">
+	                  Mark's file · <span className="text-green-600">2 of 2 docs received</span> · no action needed
+	                </span>
+	              </div>
+	              <div className="mt-3 w-full max-w-[360px] rounded-2xl border border-sand3 bg-white p-4 shadow-float">
+	                <div className="flex items-center justify-between">
+	                  <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
+	                    Doc collection
+	                  </div>
+	                  <div className="text-xs font-semibold text-muted">Today</div>
+	                </div>
+	                <div className="mt-3 space-y-3 text-[12px] font-semibold text-inkSoft">
+	                  <div className="flex items-center justify-between gap-3">
+	                    <div className="min-w-0">
+	                      <div className="truncate font-bold text-ink">Mark Johnson</div>
+	                      <div className="text-muted">Ready to start · 2/2 received</div>
+	                    </div>
+	                    <span className="shrink-0 rounded-full bg-green-100 px-2 py-1 text-[11px] font-extrabold text-green-700">
+	                      Complete
+	                    </span>
+	                  </div>
+	                  <div className="h-px bg-sand3" />
+	                  <div className="flex items-center justify-between gap-3">
+	                    <div className="min-w-0">
+	                      <div className="truncate font-bold text-ink">Amanda Lee</div>
+	                      <div className="text-muted">Waiting on W-2 · last ping 2d ago</div>
+	                    </div>
+	                    <span className="shrink-0 rounded-full bg-brand/10 px-2 py-1 text-[11px] font-extrabold text-brand">
+	                      In progress
+	                    </span>
+	                  </div>
+	                  <div className="h-px bg-sand3" />
+	                  <div className="flex items-center justify-between gap-3">
+	                    <div className="min-w-0">
+	                      <div className="truncate font-bold text-ink">Carlos Diaz</div>
+	                      <div className="text-muted">Needs 1099 · ping scheduled</div>
+	                    </div>
+	                    <span className="shrink-0 rounded-full bg-sand2 px-2 py-1 text-[11px] font-extrabold text-inkSoft">
+	                      Pending
+	                    </span>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </section>
 
-      <section className="border-y border-sand3 bg-sand2 py-6">
-        <div className="overflow-hidden">
-          <div className="flex w-max animate-ticker gap-12">
+	      <section className="border-y border-sand3 bg-sand2 py-6">
+	        <div className="overflow-hidden">
+	          <div className="flex w-max animate-ticker gap-12">
             {repeatedTickerItems.map((item, index) => (
               <div key={`${item}-${index}`} className="flex items-center gap-3 whitespace-nowrap text-sm font-semibold text-inkSoft">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -493,12 +522,51 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+	        </div>
+	      </section>
 
-      <section id="how" className="bg-white py-24">
-        <div className="section-shell">
-          <Reveal className="w-full">
+	      <section className="bg-white py-20">
+	        <div className="section-shell">
+	          <Reveal className="w-full">
+	            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
+	              <span className="h-0.5 w-5 rounded bg-brand" />
+	              First text preview
+	            </div>
+	            <h2 className="display-title mb-4 max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
+	              The first SMS your client gets.
+	            </h2>
+	            <p className="body-copy mb-10 max-w-2xl">
+	              Word for word — so you can picture sending it to your least-technical client with confidence.
+	            </p>
+
+	            <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+	              <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+	                <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
+	                  SMS
+	                </div>
+	                <div className="text-xs font-semibold text-muted">TaxPing</div>
+	              </div>
+	              <div className="bg-[#f2f2f7] px-6 py-8">
+	                <div className="flex justify-start">
+	                  <div className="max-w-[560px] rounded-3xl rounded-bl-md border border-sand3 bg-white px-5 py-4 text-[15px] font-semibold leading-7 text-inkSoft shadow-sm">
+	                    Hi Mark — it&apos;s your tax preparer&apos;s office. I&apos;ll text you a short checklist for your return.
+	                    Reply here with a photo of each document (no portal, no login). Ready to start?
+	                  </div>
+	                </div>
+	                <div className="mt-4 flex justify-end">
+	                  <div className="max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+	                    Yes
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </Reveal>
+	        </div>
+	      </section>
+
+	      <section id="how" className="bg-white py-24">
+	        <div className="section-shell">
+	          <Reveal className="w-full">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
               <span className="h-0.5 w-5 rounded bg-brand" />
               How it works
@@ -513,118 +581,86 @@ export default function LandingPage() {
               to get documents from clients who will not use a portal.
             </p>
 
-            <div className="mx-auto max-w-4xl">
-              <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
-                <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
-                    Messages
-                  </div>
-                  <div className="text-xs font-semibold text-muted">TaxPing</div>
-                </div>
+	            <div className="mx-auto max-w-5xl">
+	              <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
+	                <div className="flex items-center justify-between border-b border-sand3 bg-sand px-6 py-4">
+	                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-muted">
+	                    Process
+	                  </div>
+	                  <div className="text-xs font-semibold text-muted">3 steps</div>
+	                </div>
 
-                <div className="space-y-6 bg-[#f2f2f7] px-6 py-8">
-                  {howItWorks.map((item) => {
-                    const isOut = item.side === 'out';
-                    return (
-                      <div key={item.number} className="space-y-2">
-                        <div className="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-muted/80">
-                          Step {item.number}
-                        </div>
-                        <div className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
-                          <div
-                            className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
-                              isOut
-                                ? 'rounded-br-md bg-brand text-white'
-                                : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
-                            }`}
-                          >
-                            <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
-                              {item.title}
-                            </div>
-                            <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
-                              {item.text}
-                            </div>
+	                <div className="bg-[#f2f2f7] px-6 py-10">
+	                  <div className="mx-auto max-w-4xl space-y-8">
+	                    {howItWorks.map((item, index) => {
+	                      const isOut = item.side === 'out';
+	                      const isLast = index === howItWorks.length - 1;
+	                      return (
+	                        <div key={item.number} className="flex gap-6">
+	                          <div className="flex w-14 flex-col items-center">
+	                            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-sand3 bg-white text-[11px] font-black text-ink">
+	                              {item.number}
+	                            </div>
+	                            {!isLast ? <div className="mt-2 w-[2px] flex-1 rounded bg-sand3" /> : null}
+	                          </div>
+	                          <div className={`flex-1 ${isOut ? 'text-right' : 'text-left'}`}>
+	                            <div className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
+	                              <div
+	                                className={`relative max-w-[640px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
+	                                  isOut
+	                                    ? 'rounded-br-md bg-brand text-white'
+	                                    : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
+	                                }`}
+	                              >
+	                                <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
+	                                  {item.title}
+	                                </div>
+	                                <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
+	                                  {item.text}
+	                                </div>
 
-                            <div
-                              className={`pointer-events-none absolute -bottom-3 ${
-                                isOut ? 'right-4' : 'left-4'
-                              } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
-                            >
-                              {item.reaction}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+	                                <div
+	                                  className={`pointer-events-none absolute -bottom-3 ${
+	                                    isOut ? 'right-4' : 'left-4'
+	                                  } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
+	                                >
+	                                  {item.reaction}
+	                                </div>
+	                              </div>
+	                            </div>
+	                          </div>
+	                        </div>
+	                      );
+	                    })}
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </Reveal>
+	        </div>
+	      </section>
 
-      <section className="relative overflow-hidden bg-forest py-24 text-white">
-        <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
-        <div className="section-shell relative">
-          <Reveal className="w-full">
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-              <span className="h-0.5 w-5 rounded bg-white/30" />
-              Built for solos
-            </div>
-            <h2 className="font-display mb-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-              Everything you need.
-              <br />
-              Nothing extra.
-            </h2>
-            <p className="mb-14 max-w-2xl text-lg leading-8 text-white/65">
-              No onboarding call. No IT department. No asking clients to remember a password. If they
-              can text, they can use TaxPing.
-            </p>
-
-            <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.25)]">
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
-                <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-                  Messages
-                </div>
-                <div className="text-xs font-semibold text-white/55">TaxPing</div>
-              </div>
-
-              <div className="space-y-4 bg-[#f2f2f7] px-6 py-8 text-ink">
-                {features.map(([icon, title, text], index) => {
-                  const isOut = index % 2 === 0;
-                  return (
-                    <div key={title} className={`flex ${isOut ? 'justify-end' : 'justify-start'}`}>
-                      <div
-                        className={`relative max-w-[560px] rounded-3xl px-5 py-4 text-[15px] font-semibold leading-7 shadow-sm ${
-                          isOut
-                            ? 'rounded-br-md bg-brand text-white'
-                            : 'rounded-bl-md border border-sand3 bg-white text-inkSoft'
-                        }`}
-                      >
-                        <div className={`font-display text-base font-black tracking-tight ${isOut ? 'text-white' : 'text-ink'}`}>
-                          {title}
-                        </div>
-                        <div className={`mt-1 text-sm font-semibold leading-7 ${isOut ? 'text-white/85' : 'text-inkSoft'}`}>
-                          {text}
-                        </div>
-
-                        <div
-                          className={`pointer-events-none absolute -bottom-3 ${
-                            isOut ? 'right-4' : 'left-4'
-                          } flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md`}
-                        >
-                          {icon}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+	      <section className="relative overflow-hidden bg-forest py-28 text-white">
+	        <div className="absolute right-[-100px] top-[-100px] h-[500px] w-[500px] rounded-full bg-white/5 blur-3xl" />
+	        <div className="section-shell relative">
+	          <Reveal className="w-full">
+	            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+	              <span className="h-0.5 w-5 rounded bg-white/30" />
+	              February, without the chase
+	            </div>
+	            <h2 className="font-display mb-8 max-w-4xl text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+	              February without TaxPing is a calendar full of returns that can&apos;t start.
+	            </h2>
+	            <p className="max-w-4xl text-xl font-semibold leading-9 text-white/70 md:text-2xl md:leading-10">
+	              <span className="font-extrabold text-white">Without TaxPing:</span> unanswered emails, portal links ignored, you
+	              tracking who&apos;s missing a W-2 in a sticky note, and the same “quick reminder” draft copied 40 times.
+	              <br />
+	              <span className="font-extrabold text-white">With TaxPing:</span> one calm SMS thread per client, automatic reminders,
+	              and every doc landing named in your folder — so you start returns instead of starting chases.
+	            </p>
+	          </Reveal>
+	        </div>
+	      </section>
 
       <section className="bg-sand py-24">
         <div className="section-shell">
@@ -674,34 +710,37 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="pricing" className="border-t border-sand3 bg-white py-24">
-        <div className="section-shell grid gap-14 md:grid-cols-2 md:items-start">
-          <Reveal className="w-full">
-            <div>
+	      <section id="pricing" className="border-t border-sand3 bg-white py-24">
+	        <div className="section-shell grid gap-14 md:grid-cols-2 md:items-start">
+	          <Reveal className="w-full">
+	            <div>
               <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-brand">
                 <span className="h-0.5 w-5 rounded bg-brand" />
                 Early access
               </div>
-              <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
-                Early access for
-                <br />
-                small firms & solo
-                <br />
-                tax pros.
-              </h2>
-              <p className="body-copy mb-6 max-w-xl">
-                We&apos;re inviting a small group of tax professionals to test TaxPing and help shape the
-                product.
-              </p>
+	              <h2 className="display-title mb-5 text-4xl font-extrabold leading-tight md:text-6xl">
+	                Early access for
+	                <br />
+	                small firms & solo
+	                <br />
+	                tax pros.
+	              </h2>
+	              <div className="mb-6 inline-flex items-end gap-2 rounded-2xl border border-sand3 bg-sand px-4 py-3">
+	                <div className="text-4xl font-black tracking-tight text-ink">$149</div>
+	                <div className="pb-1 text-sm font-extrabold uppercase tracking-[0.18em] text-muted">per month</div>
+	              </div>
+	              <p className="body-copy mb-6 max-w-xl">
+	                We&apos;re inviting a small group of tax professionals to test TaxPing and help shape the
+	                product.
+	              </p>
               <div className="flex gap-3 rounded-2xl border border-brand/20 bg-brand/5 p-4 text-sm font-semibold leading-7 text-inkSoft">
                 <span className="text-xl">💡</span>
                 <p>
-                  Early users will receive discounted pricing when TaxPing launches. Pricing will be
-                  designed for small firms and solo tax professionals.
-                </p>
-              </div>
-            </div>
-          </Reveal>
+	                  Founding members lock in <span className="font-extrabold text-ink">$149/month</span> and help shape the product before it opens up.
+	                </p>
+	              </div>
+	            </div>
+	          </Reveal>
 
           <Reveal className="w-full" delayMs={120}>
             <div className="overflow-hidden rounded-3xl border border-sand3 bg-white shadow-float">
@@ -711,9 +750,9 @@ export default function LandingPage() {
               </div>
 
               <div className="space-y-4 bg-[#f2f2f7] px-6 py-8">
-                <div className="flex justify-end">
-                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
-                    Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
+	                <div className="flex justify-end">
+	                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+	                    Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
                     <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
                       🔥
                     </div>
@@ -741,14 +780,14 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <div className="flex justify-end">
-                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
-                    Early users get discounted launch pricing.
-                    <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
-                      🏷️
-                    </div>
-                  </div>
-                </div>
+	                <div className="flex justify-end">
+	                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
+	                    Founding price: <span className="font-black">$149/month</span>. Unlimited clients.
+	                    <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
+	                      🏷️
+	                    </div>
+	                  </div>
+	                </div>
 
                 <a
                   href={TALLY_RESPONDER_URL}
@@ -758,19 +797,22 @@ export default function LandingPage() {
                 >
                   Join Early Access →
                 </a>
-                <p className="text-center text-xs font-semibold text-muted">
-                  No credit card to reserve your spot.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+	                <p className="text-center text-xs font-semibold text-muted">
+	                  No credit card to reserve your spot.
+	                </p>
+	                <p className="text-center text-xs font-semibold text-muted">
+	                  Built for solo preparers on Drake, Lacerte, and ProSeries.
+	                </p>
+	              </div>
+	            </div>
+	          </Reveal>
+	        </div>
+	      </section>
 
-      <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
-        <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-        <div className="section-shell relative max-w-4xl">
-          <Reveal className="w-full">
+	      <section id="signup" className="relative overflow-hidden bg-brand py-24 text-center text-white">
+	        <div className="absolute left-1/2 top-[-120px] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+	        <div className="section-shell relative max-w-4xl">
+	          <Reveal className="w-full">
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
               <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
               <span>
@@ -782,10 +824,10 @@ export default function LandingPage() {
               <br />
               <span className="italic text-white/80">One tax season</span> to change everything.
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
-              Join early access in 60 seconds. Shape the product. Get discounted launch pricing.
-            </p>
-          </Reveal>
+	            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
+	              Join early access in 60 seconds. Shape the product. Lock in <span className="font-extrabold text-white">$149/month</span>.
+	            </p>
+	          </Reveal>
 
           <Reveal className="w-full" delayMs={100}>
             <div className="mx-auto mb-10 max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
@@ -830,34 +872,44 @@ export default function LandingPage() {
             </div>
           </Reveal>
 
-          <Reveal className="w-full" delayMs={160}>
-            <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
+	          <Reveal className="w-full" delayMs={160}>
+	            <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-float">
+	              <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-4">
                 <div className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                   Join early access
                 </div>
                 <div className="text-xs font-semibold text-white/60">Tally</div>
-              </div>
-              <div className="bg-[#f2f2f7] p-2 sm:p-3">
-                <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-                  <iframe
-                    title="Join Early Access"
-                    src={TALLY_EMBED_URL}
-                    loading="lazy"
-                    className="block h-[820px] w-full border-0"
-                  />
-                </div>
-              </div>
-            </div>
-            <a
-              href={TALLY_RESPONDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex w-full max-w-md justify-center rounded-full bg-white px-8 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
-            >
-              Open the form in a new tab →
-            </a>
-          </Reveal>
+	              </div>
+	              <div className="bg-[#f2f2f7] p-2 sm:p-3">
+	                <div className="px-2 pb-2 sm:hidden">
+	                  <a
+	                    href={TALLY_RESPONDER_URL}
+	                    target="_blank"
+	                    rel="noopener noreferrer"
+	                    className="inline-flex w-full items-center justify-center rounded-2xl bg-brand px-6 py-4 text-base font-extrabold text-white shadow-glow transition hover:bg-brandDark"
+	                  >
+	                    Open form →
+	                  </a>
+	                </div>
+	                <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+	                  <iframe
+	                    title="Join Early Access"
+	                    src={TALLY_EMBED_URL}
+	                    loading="lazy"
+	                    className="block h-[680px] w-full border-0 sm:h-[820px]"
+	                  />
+	                </div>
+	              </div>
+	            </div>
+	            <a
+	              href={TALLY_RESPONDER_URL}
+	              target="_blank"
+	              rel="noopener noreferrer"
+	              className="mt-8 inline-flex w-full max-w-lg justify-center rounded-2xl bg-white px-10 py-5 text-lg font-black text-brand shadow-float transition hover:-translate-y-1"
+	            >
+	              Claim your founding spot →
+	            </a>
+	          </Reveal>
 
           <Reveal className="w-full" delayMs={220}>
             <p className="mt-5 text-sm font-semibold text-white/55">
@@ -867,28 +919,46 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-ink py-8 text-white">
-        <div className="section-shell flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-sm">💬</div>
-            <div className="font-display text-xl font-extrabold">
-              Tax<span className="text-brand">Ping</span>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-6 text-sm font-semibold text-white/40">
-            <Link href="#" className="transition hover:text-white/80">
-              Privacy
-            </Link>
-            <Link href="#" className="transition hover:text-white/80">
-              Terms
-            </Link>
-            <a href="mailto:hello@taxping.com" className="transition hover:text-white/80">
-              hello@taxping.com
-            </a>
-          </div>
-          <div className="text-xs font-semibold text-white/25">© 2026 TaxPing</div>
-        </div>
-      </footer>
-    </main>
-  );
-}
+	      <section className="border-t border-sand3 bg-white py-14">
+	        <div className="section-shell max-w-4xl">
+	          <div className="rounded-3xl border border-sand3 bg-sand px-6 py-6 shadow-float">
+	            <div className="text-sm font-extrabold text-ink">
+	              Does my client need to download anything?
+	            </div>
+	            <div className="mt-2 text-sm font-semibold leading-7 text-muted">
+	              No. They receive a normal text and reply with photos — no apps, no account, no portal login.
+	            </div>
+	          </div>
+	        </div>
+	      </section>
+
+	      <footer className="bg-ink py-10 text-white">
+	        <div className="section-shell flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+	          <div className="flex items-center gap-3">
+	            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-sm">💬</div>
+	            <div className="font-display text-xl font-extrabold">
+	              Tax<span className="text-brand">Ping</span>
+	            </div>
+	          </div>
+	          <div className="flex flex-wrap gap-6 text-sm font-semibold text-white/60">
+	            <Link href="#" className="transition hover:text-white/80">
+	              Privacy
+	            </Link>
+	            <Link href="#" className="transition hover:text-white/80">
+	              Terms
+	            </Link>
+	            <a
+	              href={TALLY_RESPONDER_URL}
+	              target="_blank"
+	              rel="noopener noreferrer"
+	              className="transition hover:text-white/80"
+	            >
+	              Contact form
+	            </a>
+	          </div>
+	          <div className="text-xs font-semibold text-white/35">© 2026 TaxPing</div>
+	        </div>
+	      </footer>
+	    </main>
+	  );
+	}
