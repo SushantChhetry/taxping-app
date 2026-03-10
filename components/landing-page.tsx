@@ -196,12 +196,19 @@ function useSmsDemo() {
 export default function LandingPage() {
   const [showBadge, setShowBadge] = useState(false);
   const spotsLeft = 10;
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesScrollRef = useRef<HTMLDivElement | null>(null);
 
   const { shownMessages, typedText, isTyping } = useSmsDemo();
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+    const container = messagesScrollRef.current;
+    if (!container) return;
+
+    const raf = requestAnimationFrame(() => {
+      container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [shownMessages.length, isTyping]);
 
   useEffect(() => {
@@ -216,7 +223,7 @@ export default function LandingPage() {
   return (
     <main className="relative">
       <div
-        className={`fixed bottom-7 right-7 z-40 hidden items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 shadow-float transition-all duration-300 md:flex ${
+        className={`pointer-events-none fixed bottom-7 right-7 z-40 hidden items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 shadow-float transition-all duration-300 lg:flex ${
           showBadge ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
         }`}
       >
@@ -325,7 +332,7 @@ export default function LandingPage() {
           <div className="relative">
             <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
-            <div className="absolute -left-16 bottom-14 z-20 hidden animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
+            <div className="pointer-events-none absolute -left-24 bottom-16 z-0 hidden animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float lg:flex">
               <span className="text-lg">📄</span>
               <div className="text-xs font-bold leading-4 text-inkSoft">
                 Johnson_Mark_W2_2025.pdf
@@ -333,7 +340,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="absolute -right-14 top-24 z-20 hidden animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white px-4 py-3 text-left shadow-float lg:flex">
+            <div className="pointer-events-none absolute -right-24 top-20 z-0 hidden animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float lg:flex">
               <span className="text-lg">✅</span>
               <div className="text-xs font-bold leading-4 text-inkSoft">
                 All docs received
@@ -370,7 +377,10 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <div className="flex-1 min-h-0 overflow-y-auto bg-[#0a0f1a] px-2 pb-4 pt-3">
+                <div
+                  ref={messagesScrollRef}
+                  className="flex-1 min-h-0 overscroll-contain overflow-y-auto bg-[#0a0f1a] px-2 pb-4 pt-3"
+                >
                   <div className="mb-3 text-center text-[10px] text-neutral-500">Today 9:02 AM</div>
                   <div className="flex flex-col gap-2">
                     {shownMessages.map((message, index) => (
@@ -412,7 +422,6 @@ export default function LandingPage() {
                         </div>
                       </div>
                     ) : null}
-                    <div ref={messagesEndRef} />
                   </div>
                 </div>
 

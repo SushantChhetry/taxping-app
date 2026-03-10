@@ -12,6 +12,8 @@ GitHub-ready landing page repo built with Next.js, React, and Tailwind CSS.
 
 ## Getting started
 
+This repo expects a supported Node version (Node `^20.19.0 || ^22.13.0 || >=24`). If you use `nvm`, there is a `.nvmrc` you can `nvm use`.
+
 ```bash
 npm install
 npm run dev
