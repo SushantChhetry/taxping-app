@@ -212,7 +212,6 @@ function useSmsDemo() {
 
 export default function LandingPage() {
   const [showBadge, setShowBadge] = useState(false);
-  const spotsLeft = 10;
   const messagesScrollRef = useRef<HTMLDivElement | null>(null);
 
   const { shownMessages, typedText, isTyping } = useSmsDemo();
@@ -287,7 +286,7 @@ export default function LandingPage() {
         <div className="animate-fadeInUpSoft">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">
             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulseSoft" />
-            Recruiting 10 founding members · December 2026
+            Recruiting 10 founding spots · December 2026
           </div>
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-muted">
             Document collection, simplified
@@ -341,7 +340,7 @@ export default function LandingPage() {
 	          <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-muted">
 	            <span className="h-2 w-2 rounded-full bg-green-500" />
 	            Open to solo preparers with <span className="font-extrabold text-ink">75–400 clients</span> ·{' '}
-	            <span className="font-extrabold text-brand">10 spots only</span>
+		            <span className="font-extrabold text-brand">auto-organized docs in Drive</span>
           </div>
         </div>
 
@@ -752,7 +751,7 @@ export default function LandingPage() {
               <div className="space-y-4 bg-[#f2f2f7] px-6 py-8">
 	                <div className="flex justify-end">
 	                  <div className="relative max-w-[560px] rounded-3xl rounded-br-md bg-brand px-5 py-4 text-[15px] font-semibold leading-7 text-white shadow-sm">
-	                    Limited early access — <span className="font-black">{spotsLeft}</span> spots remaining.
+		                    Founding members lock in $149/month and shape the product.
                     <div className="pointer-events-none absolute -bottom-3 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-sand3 bg-white/95 text-sm shadow-float backdrop-blur-md">
                       🔥
                     </div>
@@ -798,7 +797,7 @@ export default function LandingPage() {
                   Join Early Access →
                 </a>
 	                <p className="text-center text-xs font-semibold text-muted">
-	                  No credit card to reserve your spot.
+		                  No credit card required.
 	                </p>
 	                <p className="text-center text-xs font-semibold text-muted">
 	                  Built for solo preparers on Drake, Lacerte, and ProSeries.
@@ -816,11 +815,11 @@ export default function LandingPage() {
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-bold text-white/90">
               <span className="h-2 w-2 rounded-full bg-white animate-pulseSoft" />
               <span>
-                <strong>{spotsLeft}</strong> founding spots remaining
+	                Lock in <strong>$149/month</strong> · Direct line to the founder
               </span>
             </div>
             <h2 className="font-display mb-4 text-4xl font-black tracking-tight text-white md:text-7xl">
-              Ten spots.
+              10 founding spots.
               <br />
               <span className="italic text-white/80">One tax season</span> to change everything.
             </h2>
@@ -907,7 +906,7 @@ export default function LandingPage() {
 	              rel="noopener noreferrer"
 	              className="mt-8 inline-flex w-full max-w-lg justify-center rounded-2xl bg-white px-10 py-5 text-lg font-black text-brand shadow-float transition hover:-translate-y-1"
 	            >
-	              Claim your founding spot →
+	              Join as a founding member →
 	            </a>
 	          </Reveal>
 
