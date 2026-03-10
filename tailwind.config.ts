@@ -28,14 +28,6 @@ const config: Config = {
         float: '0 16px 48px rgba(13, 27, 46, 0.12)'
       },
       keyframes: {
-        floatA: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' }
-        },
-        floatB: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(6px)' }
-        },
         ticker: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' }
@@ -54,8 +46,6 @@ const config: Config = {
         }
       },
       animation: {
-        floatA: 'floatA 4s ease-in-out infinite',
-        floatB: 'floatB 5s ease-in-out infinite .5s',
         ticker: 'ticker 32s linear infinite',
         pulseSoft: 'pulseSoft 2s ease-in-out infinite',
         blink: 'blink 1s step-end infinite',

@@ -328,30 +328,14 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <div className="flex flex-col items-center">
-            <div className="relative">
-              <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
+	        <div className="flex justify-center">
+	          <div className="flex flex-col items-center">
+	            <div className="relative">
+	              <div className="absolute inset-[-40px] rounded-full bg-brand/10 blur-3xl" />
 
-              <div className="pointer-events-none absolute -left-28 bottom-20 z-0 hidden max-w-[220px] animate-floatA items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md xl:flex">
-                <span className="text-lg">📄</span>
-                <div className="text-xs font-bold leading-4 text-inkSoft">
-                  Johnson_Mark_W2_2025.pdf
-                  <span className="mt-1 block font-semibold text-muted">Auto-named · Saved to Drive</span>
-                </div>
-              </div>
-
-              <div className="pointer-events-none absolute -right-28 top-24 z-0 hidden max-w-[220px] animate-floatB items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md xl:flex">
-                <span className="text-lg">✅</span>
-                <div className="text-xs font-bold leading-4 text-inkSoft">
-                  All docs received
-                  <span className="mt-1 block font-semibold text-muted">Ready to prep</span>
-                </div>
-              </div>
-
-              <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
-                <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
-                <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
+	              <div className="relative z-10 h-[560px] w-[270px] rounded-[3.25rem] bg-neutral-950 p-[10px] shadow-[0_60px_100px_rgba(0,0,0,0.45)] ring-8 ring-neutral-950/90">
+	                <div className="absolute left-1/2 top-3 z-20 h-8 w-28 -translate-x-1/2 rounded-2xl bg-black" />
+	                <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2.5rem] bg-[#091220]">
                   <div className="flex items-end justify-between bg-neutral-900 px-5 pb-2 pt-5 text-white">
                     <span className="text-sm font-semibold">9:02</span>
                     <div className="flex items-center gap-2">
@@ -442,29 +426,12 @@ export default function LandingPage() {
                       ↑
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-5 grid w-[270px] gap-3 xl:hidden">
-              <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md">
-                <span className="text-lg">📄</span>
-                <div className="text-xs font-bold leading-4 text-inkSoft">
-                  Johnson_Mark_W2_2025.pdf
-                  <span className="mt-1 block font-semibold text-muted">Auto-named · Saved to Drive</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-sand3 bg-white/95 px-4 py-3 text-left shadow-float backdrop-blur-md">
-                <span className="text-lg">✅</span>
-                <div className="text-xs font-bold leading-4 text-inkSoft">
-                  All docs received
-                  <span className="mt-1 block font-semibold text-muted">Ready to prep</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </section>
 
       <section className="border-y border-sand3 bg-sand2 py-6">
         <div className="overflow-hidden">
