@@ -15,6 +15,8 @@ type Message = {
   isPhoto?: boolean;
   photoName?: string;
   photoLabel?: string;
+  isTimestamp?: boolean;       // new
+  timestampLabel?: string;     // new
 };
 
 const tickerItems = [
@@ -99,12 +101,12 @@ const seasonFeatures = [
 const demoConversation: Message[] = [
   {
     from: 'in',
-    text: "Hi Mark! I'm collecting docs for your return — no app needed, just reply here. Ready to get started? 📋"
+    text: "Hi Mark! Time to gather your tax docs — I'll walk you through it one step at a time. Ready? 📋"
   },
   { from: 'out', text: 'Sure! What do I need to send?' },
   {
     from: 'in',
-    text: 'Let’s start with your W-2. Just snap a photo and text it here 📸'
+    text: "Let's start with your W-2. Just snap a photo and reply with it here 📸"
   },
   {
     from: 'out',
@@ -114,10 +116,22 @@ const demoConversation: Message[] = [
   },
   {
     from: 'in',
-    text: '✅ Got it! Any 1099s this year — freelance work, interest, or dividends?'
+    text: '✅ W-2 saved. Did you have any 1099s this year — freelance, interest, or dividends?'
   },
-  { from: 'out', text: 'Yes — one 1099-NEC from a consulting gig.' },
-  { from: 'in', text: 'Perfect, send it over whenever you’re ready!' },
+  { from: 'out', text: "Yeah I think so — I'll have to dig it up." },
+  {
+    from: 'in',
+    text: "No rush — I'll check back in a couple days 👍"
+  },
+  {
+    from: 'in',
+    isTimestamp: true,
+    timestampLabel: '2 days later · no action needed from you'
+  },
+  {
+    from: 'in',
+    text: 'Hey Mark — still need that 1099 whenever you find it. No rush, just reply here 📎'
+  },
   {
     from: 'out',
     isPhoto: true,
@@ -126,9 +140,9 @@ const demoConversation: Message[] = [
   },
   {
     from: 'in',
-    text: 'That’s everything! 🎉 Both files are saved and ready for your preparer. You’re all set — thank you!'
+    text: "Done! 🎉 Both docs are saved to your preparer's folder. You're all set."
   },
-  { from: 'out', text: 'That was way easier than the portal 😂' }
+  { from: 'out', text: 'Sorry for the delay — glad it was this easy 😅' }
 ];
 
 function useSmsDemo() {
@@ -148,6 +162,15 @@ function useSmsDemo() {
 
         for (let i = 0; i < demoConversation.length; i += 1) {
           const item = demoConversation[i];
+
+          if (item.isTimestamp) {
+            if (cancelled) return;
+            setIsTyping(false);
+            setTypedText('');
+            setStep(i + 1);
+            await new Promise((resolve) => { timer = setTimeout(resolve, 1800); });
+            continue;
+          }
 
           if (item.from === 'out' && item.text && !item.isPhoto) {
             setIsTyping(true);
@@ -372,35 +395,52 @@ export default function LandingPage() {
                   >
                     <div className="mb-3 text-center text-[10px] text-neutral-500">Today 9:02 AM</div>
                     <div className="flex flex-col gap-2">
-                      {shownMessages.map((message, index) => (
-                        <div
-                          key={`${message.from}-${index}`}
-                          className={`flex flex-col ${message.from === 'out' ? 'items-end' : 'items-start'}`}
-                        >
-                          {message.isPhoto ? (
-                            <div className="rounded-[18px] rounded-br-md border border-brand/20 bg-[#0f1e38] p-1.5 text-center text-white">
-                              <div className="flex h-24 w-40 flex-col items-center justify-center gap-1 rounded-xl bg-gradient-to-br from-[#0a1428] to-[#060e1e]">
-                                <span className="text-xl">📷</span>
-                                <span className="text-[9px] text-blue-200">{message.photoName}</span>
-                                <span className="text-[10px] text-blue-400">{message.photoLabel}</span>
+                      {shownMessages.map((message, index) => {
+                        if (message.isTimestamp) {
+                          return (
+                            <div key={`ts-${index}`} className="my-3 flex items-center gap-2">
+                              <div className="h-px flex-1 bg-white/10" />
+                              <div className="flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1">
+                                <span className="h-1.5 w-1.5 rounded-full bg-brand/70" />
+                                <span className="text-[9px] font-bold uppercase tracking-wide text-brand/80">
+                                  {message.timestampLabel}
+                                </span>
                               </div>
+                              <div className="h-px flex-1 bg-white/10" />
                             </div>
-                          ) : (
-                            <div
-                              className={`max-w-[196px] rounded-[17px] px-3 py-2 text-[13px] leading-[1.45] text-white ${
-                                message.from === 'out'
-                                  ? 'rounded-br-md bg-brand'
-                                  : 'rounded-bl-md bg-[#1a2540]'
-                              }`}
-                            >
-                              {message.text}
-                            </div>
-                          )}
-                          {message.from === 'out' && !message.isPhoto ? (
-                            <span className="px-2 pt-1 text-[9px] text-neutral-500">Delivered</span>
-                          ) : null}
-                        </div>
-                      ))}
+                          );
+                        }
+
+                        return (
+                          <div
+                            key={`${message.from}-${index}`}
+                            className={`flex flex-col ${message.from === 'out' ? 'items-end' : 'items-start'}`}
+                          >
+                            {message.isPhoto ? (
+                              <div className="rounded-[18px] rounded-br-md border border-brand/20 bg-[#0f1e38] p-1.5 text-center text-white">
+                                <div className="flex h-24 w-40 flex-col items-center justify-center gap-1 rounded-xl bg-gradient-to-br from-[#0a1428] to-[#060e1e]">
+                                  <span className="text-xl">📷</span>
+                                  <span className="text-[9px] text-blue-200">{message.photoName}</span>
+                                  <span className="text-[10px] text-blue-400">{message.photoLabel}</span>
+                                </div>
+                              </div>
+                            ) : (
+                              <div
+                                className={`max-w-[196px] rounded-[17px] px-3 py-2 text-[13px] leading-[1.45] text-white ${
+                                  message.from === 'out'
+                                    ? 'rounded-br-md bg-brand'
+                                    : 'rounded-bl-md bg-[#1a2540]'
+                                }`}
+                              >
+                                {message.text}
+                              </div>
+                            )}
+                            {message.from === 'out' && !message.isPhoto ? (
+                              <span className="px-2 pt-1 text-[9px] text-neutral-500">Delivered</span>
+                            ) : null}
+                          </div>
+                        );
+                      })}
                       {isTyping ? (
                         <div className="flex items-end gap-2 px-1">
                           <div className="h-6 w-6 rounded-full bg-[#203152]" />
@@ -432,6 +472,12 @@ export default function LandingPage() {
                   </div>
                   </div>
                 </div>
+              </div>
+              <div className="mt-5 flex items-center gap-2 rounded-2xl border border-sand3 bg-white px-4 py-2.5 shadow-float">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-[11px]">✓</span>
+                <span className="text-[11px] font-bold text-inkSoft">
+                  Mark's file · <span className="text-green-600">2 of 2 docs received</span> · no action needed
+                </span>
               </div>
             </div>
           </div>
