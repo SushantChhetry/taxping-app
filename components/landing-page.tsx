@@ -3,6 +3,10 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 
+const TALLY_FORM_ID = process.env.NEXT_PUBLIC_TALLY_FORM_ID || 'RG48Ll';
+const TALLY_RESPONDER_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
+const TALLY_EMBED_URL = `https://tally.so/embed/${TALLY_FORM_ID}?hideTitle=1&transparentBackground=1`;
+
 type Message = {
   from: 'in' | 'out';
   text?: string;
@@ -190,17 +194,8 @@ function useSmsDemo() {
 }
 
 export default function LandingPage() {
-  const [spotsLeft, setSpotsLeft] = useState(10);
-  const [submitted, setSubmitted] = useState(false);
   const [showBadge, setShowBadge] = useState(false);
-  const [showInlineForm, setShowInlineForm] = useState(true);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    software: '',
-    clients: ''
-  });
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const spotsLeft = 10;
 
   const { shownMessages, typedText, isTyping } = useSmsDemo();
 
@@ -211,28 +206,7 @@ export default function LandingPage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    const formId = process.env.NEXT_PUBLIC_TALLY_FORM_ID;
-    setShowInlineForm(!formId);
-  }, []);
-
   const repeatedTickerItems = useMemo(() => [...tickerItems, ...tickerItems], []);
-
-  const handleSubmit = () => {
-    const nextErrors = {
-      name: !formData.name.trim(),
-      email: !formData.email.trim() || !formData.email.includes('@'),
-      software: !formData.software.trim(),
-      clients: !formData.clients.trim()
-    };
-
-    setErrors(nextErrors);
-
-    if (Object.values(nextErrors).some(Boolean)) return;
-
-    setSubmitted(true);
-    setSpotsLeft((current) => Math.max(current - 1, 1));
-  };
 
   return (
     <main className="relative">
@@ -268,12 +242,14 @@ export default function LandingPage() {
             <Link href="#pricing" className="text-sm font-semibold text-muted transition hover:text-ink">
               Pricing
             </Link>
-            <Link
-              href="#signup"
+            <a
+              href={TALLY_RESPONDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-brandDark"
             >
-              Apply for founding cohort
-            </Link>
+              Join Early Access
+            </a>
           </nav>
         </div>
       </header>
@@ -320,12 +296,14 @@ export default function LandingPage() {
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link
-              href="#signup"
+            <a
+              href={TALLY_RESPONDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
             >
-              Apply for founding cohort →
-            </Link>
+              Join Early Access →
+            </a>
             <Link href="#how" className="text-sm font-bold text-inkSoft transition hover:text-brand">
               See how it works →
             </Link>
@@ -619,12 +597,14 @@ export default function LandingPage() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="#signup"
+            <a
+              href={TALLY_RESPONDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block rounded-full bg-brand px-6 py-4 text-center text-base font-bold text-white shadow-glow transition hover:-translate-y-1 hover:bg-brandDark"
             >
-              Apply for founding cohort →
-            </Link>
+              Join Early Access →
+            </a>
             <p className="mt-4 text-center text-xs font-semibold text-white/35">
               No credit card to reserve your spot.
             </p>
@@ -647,7 +627,7 @@ export default function LandingPage() {
             <span className="italic text-white/80">One tax season</span> to change everything.
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-white/75">
-            Apply in 60 seconds. Shape the product. Lock in $149/season — forever.
+            Join early access in 60 seconds. Shape the product. Lock in $149/season — forever.
           </p>
 
           <div className="mx-auto mb-9 grid max-w-4xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -664,75 +644,19 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {showInlineForm ? (
-            <div className="mx-auto max-w-2xl space-y-3">
-              <div className="grid gap-3 md:grid-cols-2">
-                <input
-                  value={formData.name}
-                  onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
-                  placeholder="Your name"
-                  className={`rounded-2xl border bg-white/15 px-4 py-3.5 text-sm font-semibold text-white outline-none placeholder:text-white/45 ${
-                    errors.name ? 'border-red-200' : 'border-white/25'
-                  }`}
-                />
-                <input
-                  value={formData.email}
-                  onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
-                  placeholder="your@email.com"
-                  className={`rounded-2xl border bg-white/15 px-4 py-3.5 text-sm font-semibold text-white outline-none placeholder:text-white/45 ${
-                    errors.email ? 'border-red-200' : 'border-white/25'
-                  }`}
-                />
-              </div>
-              <div className="grid gap-3 md:grid-cols-2">
-                <select
-                  value={formData.software}
-                  onChange={(event) => setFormData((current) => ({ ...current, software: event.target.value }))}
-                  className={`rounded-2xl border bg-white/15 px-4 py-3.5 text-sm font-semibold text-white outline-none ${
-                    errors.software ? 'border-red-200' : 'border-white/25'
-                  }`}
-                >
-                  <option value="" className="text-ink">
-                    Tax software you use
-                  </option>
-                  <option className="text-ink">Drake</option>
-                  <option className="text-ink">Lacerte</option>
-                  <option className="text-ink">ProSeries</option>
-                  <option className="text-ink">UltraTax</option>
-                  <option className="text-ink">Other</option>
-                </select>
-                <input
-                  value={formData.clients}
-                  onChange={(event) => setFormData((current) => ({ ...current, clients: event.target.value }))}
-                  placeholder="# of clients"
-                  type="number"
-                  min="1"
-                  className={`rounded-2xl border bg-white/15 px-4 py-3.5 text-sm font-semibold text-white outline-none placeholder:text-white/45 ${
-                    errors.clients ? 'border-red-200' : 'border-white/25'
-                  }`}
-                />
-              </div>
-              {!submitted ? (
-                <button
-                  onClick={handleSubmit}
-                  className="w-full rounded-full bg-white px-6 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
-                >
-                  Apply now — 60 seconds →
-                </button>
-              ) : (
-                <div className="rounded-2xl border border-white/30 bg-white/15 px-4 py-4 text-sm font-bold text-white">
-                  ✓ Application received! You&apos;ll hear from us within 48 hours.
-                </div>
-              )}
+          <div className="mx-auto max-w-3xl">
+            <div className="overflow-hidden rounded-3xl border border-white/20 bg-white shadow-float">
+              <iframe title="Join Early Access" src={TALLY_EMBED_URL} loading="lazy" className="h-[820px] w-full" />
             </div>
-          ) : (
             <a
-              href={`https://tally.so/r/${process.env.NEXT_PUBLIC_TALLY_FORM_ID}`}
-              className="inline-flex rounded-full bg-white px-8 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
+              href={TALLY_RESPONDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex rounded-full bg-white px-8 py-4 text-base font-extrabold text-brand shadow-float transition hover:-translate-y-1"
             >
-              Apply for founding cohort →
+              Open the form in a new tab →
             </a>
-          )}
+          </div>
 
           <p className="mt-5 text-sm font-semibold text-white/55">
             No credit card. No commitment. Every application gets a personal reply within 48 hours.

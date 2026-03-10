@@ -23,7 +23,7 @@ Open `http://localhost:3000`.
 
 1. Push this repo to GitHub.
 2. Import the repo into Vercel.
-3. Add the environment variable below if you want to use Tally instead of the built-in inline form.
+3. (Optional) Set the environment variable below to point the “Join Early Access” CTA at your own Tally form.
 
 ### Environment variable
 
@@ -31,8 +31,8 @@ Open `http://localhost:3000`.
 NEXT_PUBLIC_TALLY_FORM_ID=your_tally_form_id
 ```
 
-- If `NEXT_PUBLIC_TALLY_FORM_ID` is set, the CTA section shows a Tally link.
-- If it is blank, the page falls back to the inline demo application form.
+- If unset, the landing page defaults to the bundled Tally form id `RG48Ll`.
+- CTAs open `https://tally.so/r/<FORM_ID>` and the signup section embeds `https://tally.so/embed/<FORM_ID>`.
 
 ## Files to update before launch
 
@@ -42,7 +42,7 @@ NEXT_PUBLIC_TALLY_FORM_ID=your_tally_form_id
   - support email
   - CTA copy if needed
 - `.env.example`
-  - replace with your actual Tally form ID if using Tally
+  - set `NEXT_PUBLIC_TALLY_FORM_ID` if you want a different Tally form
 
 ## Notes
 
